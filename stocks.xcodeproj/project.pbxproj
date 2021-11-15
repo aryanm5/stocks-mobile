@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2F4B281B2742EB5000B71809 /* stocksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4B281A2742EB5000B71809 /* stocksApp.swift */; };
+		2F4B281B2742EB5000B71809 /* StocksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4B281A2742EB5000B71809 /* StocksApp.swift */; };
 		2F4B281D2742EB5000B71809 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4B281C2742EB5000B71809 /* ContentView.swift */; };
 		2F4B281F2742EB5100B71809 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F4B281E2742EB5100B71809 /* Assets.xcassets */; };
 		2F4B28222742EB5100B71809 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F4B28212742EB5100B71809 /* Preview Assets.xcassets */; };
@@ -17,7 +17,7 @@
 
 /* Begin PBXFileReference section */
 		2F4B28172742EB5000B71809 /* Stockscast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stockscast.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2F4B281A2742EB5000B71809 /* stocksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stocksApp.swift; sourceTree = "<group>"; };
+		2F4B281A2742EB5000B71809 /* StocksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksApp.swift; sourceTree = "<group>"; };
 		2F4B281C2742EB5000B71809 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2F4B281E2742EB5100B71809 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F4B28212742EB5100B71809 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -55,7 +55,7 @@
 		2F4B28192742EB5000B71809 /* stocks */ = {
 			isa = PBXGroup;
 			children = (
-				2F4B281A2742EB5000B71809 /* stocksApp.swift */,
+				2F4B281A2742EB5000B71809 /* StocksApp.swift */,
 				2F4B281C2742EB5000B71809 /* ContentView.swift */,
 				2F4B281E2742EB5100B71809 /* Assets.xcassets */,
 				2F4B28232742EB5100B71809 /* Persistence.swift */,
@@ -146,7 +146,7 @@
 				2F4B28242742EB5100B71809 /* Persistence.swift in Sources */,
 				2F4B281D2742EB5000B71809 /* ContentView.swift in Sources */,
 				2F4B28272742EB5100B71809 /* stocks.xcdatamodeld in Sources */,
-				2F4B281B2742EB5000B71809 /* stocksApp.swift in Sources */,
+				2F4B281B2742EB5000B71809 /* StocksApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
