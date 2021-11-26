@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Response: Codable {
+struct AppData: Codable {
     var stocks: [Stock]
     var news: News
 }

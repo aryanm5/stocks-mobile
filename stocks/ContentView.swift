@@ -96,7 +96,7 @@ struct ContentView: View {
         
         do {
             let (response, _) = try await URLSession.shared.data(from: url)
-            let decodedResponse = try JSONDecoder().decode(Response.self, from: response)
+            let decodedResponse = try JSONDecoder().decode(AppData.self, from: response)
             stocks = decodedResponse.stocks
             loading = false
             // set news
