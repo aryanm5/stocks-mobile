@@ -4,10 +4,10 @@
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <entity name="WatchedStock" representedClassName="WatchedStock" syncable="YES" codeGenerationType="class">
-        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="id" attributeType="String"/>
     </entity>
     <elements>
         <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
-        <element name="WatchedStock" positionX="-63" positionY="-9" width="128" height="44"/>
+        <element name="WatchedStock" positionX="-63" positionY="-9" width="128" height="14"/>
     </elements>
 </model>

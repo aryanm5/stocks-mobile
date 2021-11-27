@@ -7,7 +7,12 @@
 
 import Foundation
 
-struct AppData: Codable {
+class AppData: ObservableObject {
+    @Published var stocks: [Stock] = [Stock]()
+    @Published var news: News = News(lastUpdated: 0, articles: [Article]())
+}
+
+struct Response: Codable {
     var stocks: [Stock]
     var news: News
 }
