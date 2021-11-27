@@ -28,39 +28,18 @@ struct AllStocks: View {
             LazyVGrid(columns: columns, spacing: 20) {
                 Section {
                     ForEach(appData.stocks, id: \.self.id) { item in
-                        if inWatchlist(id: item.id) {
-                            NavigationLink(destination: Text(item.name)) {
-                                StockItem(stock: item)
-                            }
-                            .buttonStyle(PlainButtonStyle())
-                            .contextMenu {
-                                Button {
+                        NavigationLink(destination: Text(item.name)) {
+                            StockItem(stock: item)
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                        .contextMenu {
+                            if inWatchlist(id: item.id) {
+                                Button(role: .destructive) {
                                     removeWatchlist(id: item.id)
                                 } label: {
                                     Label("Remove from Watchlist", systemImage: "minus.circle.fill")
                                 }
-                            }
-                        }
-                    }
-                }
-                .padding(.bottom, 25)
-                
-                Section(
-                    header:
-                        HStack(alignment: .bottom) {
-                            Text("All Stocks").font(Font.title3.weight(.heavy))
-                            Spacer()
-                        }
-                        .padding(.leading, 20)
-                        .padding(.bottom, -10)
-                ) {
-                    ForEach(Array(appData.stocks.suffix(4)), id: \.self.id) { item in
-                        if !inWatchlist(id: item.id) {
-                            NavigationLink(destination: Text(item.name)) {
-                                StockItem(stock: item)
-                            }
-                            .buttonStyle(PlainButtonStyle())
-                            .contextMenu {
+                            } else {
                                 Button {
                                     addWatchlist(id: item.id)
                                 } label: {
@@ -69,10 +48,13 @@ struct AllStocks: View {
                             }
                         }
                     }
+                    .padding(.bottom, 25)
                 }
             }
+            .navigationTitle("All Stocks")
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .navigationTitle("All Stocks")
+        .padding()
     }
     
     private func inWatchlist(id: String) -> Bool {

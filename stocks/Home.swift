@@ -18,17 +18,27 @@ struct Home: View {
     @EnvironmentObject var appData: AppData
     
     var body: some View {
-        Form {
-            Section(header: Text("Last Updated")) {
-                Text("Last Thursday")
+        VStack(alignment: .leading, spacing: 30) {
+            VStack {
+                Text("Last Updated")
+                    .foregroundColor(Color.secondary)
+                    .font(.subheadline)
+                    .padding(.bottom, -5)
+                Text("Yesterday")
+                    .font(.title2)
+                    .bold()
             }
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(.thickMaterial)
+            .cornerRadius(15)
             
-            Section(header: Text("Watchlist")) {
                 List {
+                    Section(header: Text("Watchlist")) {
                     ForEach(watchlist.map {
                         stock in appData.stocks.first(where: { stock.id == $0.id })!
                     }, id: \.self.id) { stock in
-                        NavigationLink(destination: Text("Details")) {
+                        NavigationLink(destination: Text(stock.name)) {
                             StockRow(stock: stock)
                                 .contextMenu {
                                     Button {
@@ -46,13 +56,30 @@ struct Home: View {
                         .listRowInsets(EdgeInsets())
                     }
                     .onDelete(perform: deleteItems)
+                    .listRowBackground(Color.clear)
+                    
+                    
+                    ZStack {
+                        HStack {
+                            Spacer()
+                            Text("View All")
+                                .bold()
+                            Image(systemName: "arrow.right")
+                            Spacer()
+                        }
+                        .foregroundColor(Color.blue)
+
+                        
+                        NavigationLink(destination: AllStocks().environmentObject(appData)) {
+                            EmptyView()
+                        }.buttonStyle(PlainButtonStyle())
+                    }
+                    .listRowBackground(Color.clear)
+                    }
                 }
-                .listRowBackground(Color.clear)
-            }
-            NavigationLink(destination: AllStocks().environmentObject(appData)) {
-                Text("View All Stocks")
-            }
+            
         }
+        .padding()
         .navigationTitle("Stockscast")
     }
     
