@@ -31,7 +31,7 @@ struct Home: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding()
-                .background(.thickMaterial)
+                .background(.ultraThickMaterial)
                 .cornerRadius(15)
                 .listRowBackground(Color.clear)
                 .listRowInsets(EdgeInsets())

@@ -18,6 +18,8 @@ struct AllStocks: View {
         animation: .default)
     private var watchlist: FetchedResults<WatchedStock>
     
+    @State private var searchText = ""
+    
     let columns = [
         GridItem(.flexible(), spacing: 20),
         GridItem(.flexible(), spacing: 20),
@@ -36,7 +38,7 @@ struct AllStocks: View {
                         .padding(.top, 15)
                         .padding(.bottom, -10)
                 ) {
-                    ForEach(appData.stocks.filter { inWatchlist(id: $0.id) }, id: \.self.id) { item in
+                    ForEach(appData.stocks.filter { isSearched(stock: $0) && inWatchlist(id: $0.id) }, id: \.self.id) { item in
                         NavigationLink(destination: Text(item.name)) {
                             StockItem(stock: item)
                         }
@@ -48,7 +50,7 @@ struct AllStocks: View {
                                 Label("Remove from Watchlist", systemImage: "minus.circle.fill")
                             }
                         }
-                        
+                        .id("\(item.id)\(watchlist.count)")
                     }
                 }
                 
@@ -62,7 +64,7 @@ struct AllStocks: View {
                         .padding(.top, 15)
                         .padding(.bottom, -10)
                 ) {
-                    ForEach(appData.stocks.filter { !inWatchlist(id: $0.id) }, id: \.self.id) { item in
+                    ForEach(appData.stocks.filter { isSearched(stock: $0) && !inWatchlist(id: $0.id) }, id: \.self.id) { item in
                         NavigationLink(destination: Text(item.name)) {
                             StockItem(stock: item)
                         }
@@ -74,14 +76,26 @@ struct AllStocks: View {
                                 Label("Add to Watchlist", systemImage: "plus.circle.fill")
                             }
                         }
-                        
+                        .id("\(item.id)\(watchlist.count)")
                     }
                 }
             }
+            .searchable(text: $searchText.animation(.spring()))
         }
         .padding()
         .navigationTitle("Stocks")
         .navigationBarTitleDisplayMode(.inline)
+    }
+    
+    private func isSearched(stock: Stock) -> Bool {
+        let searchTerm = searchText.filter { !$0.isWhitespace }.lowercased()
+        
+        if searchTerm.isEmpty {
+            return true
+        }
+        
+        return stock.name.filter { !$0.isWhitespace }.lowercased().contains(searchTerm) ||
+        stock.ticker.lowercased().contains(searchTerm)
     }
     
     private func inWatchlist(id: String) -> Bool {
