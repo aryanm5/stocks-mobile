@@ -50,8 +50,9 @@ struct AllStocks: View {
                                 Label("Remove from Watchlist", systemImage: "minus.circle.fill")
                             }
                         }
-                        .id("\(item.id)\(watchlist.count)")
+                        .id("\(item.id)\(inWatchlist(id: item.id))")
                     }
+                    .transition(.scale)
                 }
                 
                 Section(
@@ -76,13 +77,14 @@ struct AllStocks: View {
                                 Label("Add to Watchlist", systemImage: "plus.circle.fill")
                             }
                         }
-                        .id("\(item.id)\(watchlist.count)")
+                        .id("\(item.id)\(inWatchlist(id: item.id))")
                     }
+                    .transition(.scale)
                 }
             }
-            .searchable(text: $searchText.animation(.spring()))
         }
         .padding()
+        .searchable(text: $searchText.animation(.spring()))
         .navigationTitle("Stocks")
         .navigationBarTitleDisplayMode(.inline)
     }

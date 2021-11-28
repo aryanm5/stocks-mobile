@@ -84,6 +84,7 @@ struct Home: View {
                 setLastUpdatedText()
             }
         }
+        .padding(.vertical)
         .navigationTitle("Stockscast")
     }
     
