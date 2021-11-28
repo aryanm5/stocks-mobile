@@ -19,23 +19,24 @@ struct Home: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 30) {
-            VStack {
-                Text("Last Updated")
-                    .foregroundColor(.secondary)
-                    .font(.subheadline)
-                    .padding(.bottom, -5)
-                Text("Yesterday")
-                    .font(.title2)
-                    .bold()
-            }
-            .frame(maxWidth: .infinity)
-            .padding()
-            .background(.thickMaterial)
-            .cornerRadius(15)
-            
-            VStack {
-                List {
-                    Section(header: Text("Watchlist")) {
+            List {
+                VStack {
+                    Text("Last Updated")
+                        .foregroundColor(.secondary)
+                        .font(.subheadline)
+                        .padding(.bottom, -5)
+                    Text("Yesterday")
+                        .font(.title2)
+                        .bold()
+                }
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(.thickMaterial)
+                .cornerRadius(15)
+                .listRowBackground(Color.clear)
+                .listRowInsets(EdgeInsets())
+                
+                Section(header: Text("Watchlist")) {
                     ForEach(watchlist.map {
                         stock in appData.stocks.first(where: { stock.id == $0.id }) ?? previewStock
                     }, id: \.self.id) { stock in
@@ -55,9 +56,9 @@ struct Home: View {
                         .padding(.bottom, 10)
                         .listRowSeparator(.hidden)
                         .listRowInsets(EdgeInsets())
-                        .listRowBackground(.thickMaterial)
                     }
                     .onDelete(perform: deleteItems)
+                    .listRowBackground(Color.clear)
                     
                     ZStack {
                         HStack {
@@ -73,14 +74,11 @@ struct Home: View {
                             EmptyView()
                         }.buttonStyle(PlainButtonStyle())
                     }
-                    .listRowBackground(Material.thickMaterial)
-                    }
+                    .listRowBackground(Color.clear)
                 }
+                .padding(.horizontal)
             }
-            //.padding()
-            .background(.thickMaterial)
         }
-        .padding()
         .navigationTitle("Stockscast")
     }
     
