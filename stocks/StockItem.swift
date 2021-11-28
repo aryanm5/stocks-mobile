@@ -21,13 +21,13 @@ struct StockItem: View {
         }
         .padding()
         .frame(
-              minWidth: 0,
-              maxWidth: .infinity,
-              minHeight: 150,
-              maxHeight: .infinity,
-              alignment: .topLeading
-            )
-        .background(LinearGradient(gradient: Gradient(colors: [.purple, .red]), startPoint: .topTrailing, endPoint: .bottomLeading))
+            minWidth: 0,
+            maxWidth: .infinity,
+            minHeight: 150,
+            maxHeight: .infinity,
+            alignment: .topLeading
+        )
+        .background(LinearGradient(gradient: Gradient(colors: [stock.color1.asColor(), stock.color2.asColor()]), startPoint: .topTrailing, endPoint: .bottomLeading))
         .cornerRadius(15)
     }
 }

@@ -21,7 +21,7 @@ struct Home: View {
         VStack(alignment: .leading, spacing: 30) {
             VStack {
                 Text("Last Updated")
-                    .foregroundColor(Color.secondary)
+                    .foregroundColor(.secondary)
                     .font(.subheadline)
                     .padding(.bottom, -5)
                 Text("Yesterday")
@@ -33,10 +33,11 @@ struct Home: View {
             .background(.thickMaterial)
             .cornerRadius(15)
             
+            VStack {
                 List {
                     Section(header: Text("Watchlist")) {
                     ForEach(watchlist.map {
-                        stock in appData.stocks.first(where: { stock.id == $0.id })!
+                        stock in appData.stocks.first(where: { stock.id == $0.id }) ?? previewStock
                     }, id: \.self.id) { stock in
                         NavigationLink(destination: Text(stock.name)) {
                             StockRow(stock: stock)
@@ -49,15 +50,14 @@ struct Home: View {
                                 }
                         }
                         .padding()
-                        .background(LinearGradient(gradient: Gradient(colors: stock.id == "apple" ? [.black, .gray] : [.purple, .red]), startPoint: .topTrailing, endPoint: .bottomLeading))
+                        .background(LinearGradient(gradient: Gradient(colors: [stock.color1.asColor(), stock.color2.asColor()]), startPoint: .topTrailing, endPoint: .bottomLeading))
                         .cornerRadius(10)
                         .padding(.bottom, 10)
                         .listRowSeparator(.hidden)
                         .listRowInsets(EdgeInsets())
+                        .listRowBackground(.thickMaterial)
                     }
                     .onDelete(perform: deleteItems)
-                    .listRowBackground(Color.clear)
-                    
                     
                     ZStack {
                         HStack {
@@ -67,23 +67,24 @@ struct Home: View {
                             Image(systemName: "arrow.right")
                             Spacer()
                         }
-                        .foregroundColor(Color.blue)
-
+                        .foregroundColor(.blue)
                         
                         NavigationLink(destination: AllStocks().environmentObject(appData)) {
                             EmptyView()
                         }.buttonStyle(PlainButtonStyle())
                     }
-                    .listRowBackground(Color.clear)
+                    .listRowBackground(Material.thickMaterial)
                     }
                 }
-            
+            }
+            //.padding()
+            .background(.thickMaterial)
         }
         .padding()
         .navigationTitle("Stockscast")
     }
     
-    private func removeWatchlist(id: String) {
+    private func removeWatchlist(id: String) -> Void {
         withAnimation {
             watchlist.filter { $0.id == id }.forEach(viewContext.delete)
             
@@ -98,7 +99,7 @@ struct Home: View {
         }
     }
     
-    private func deleteItems(offsets: IndexSet) {
+    private func deleteItems(offsets: IndexSet) -> Void {
         withAnimation {
             offsets.map { watchlist[$0] }.forEach(viewContext.delete)
             

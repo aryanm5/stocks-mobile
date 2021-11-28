@@ -5,6 +5,7 @@
 //  Created by Aryan Mittal on 11/21/21.
 //
 
+import SwiftUI
 import Foundation
 
 class AppData: ObservableObject {
@@ -15,6 +16,16 @@ class AppData: ObservableObject {
 struct Response: Codable {
     var stocks: [Stock]
     var news: News
+}
+
+struct Rgb: Codable {
+    let r: Double
+    let g: Double
+    let b: Double
+    
+    func asColor() -> Color {
+        Color(red: r / 255, green: g / 255, blue: b / 255)
+    }
 }
 
 struct Stock: Codable {
@@ -31,6 +42,8 @@ struct Stock: Codable {
     let website: String
     let wiki: String
     let preds: [Double]
+    let color1: Rgb
+    let color2: Rgb
 }
 
 struct News: Codable {
@@ -68,5 +81,7 @@ let previewStock: Stock = Stock(
         171.05,
         170.65,
         170.87,
-    ]
+    ],
+    color1: Rgb(r: 0, g: 0, b: 0),
+    color2: Rgb(r: 103, g: 103, b: 103)
 )

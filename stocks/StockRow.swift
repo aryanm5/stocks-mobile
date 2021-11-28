@@ -13,9 +13,8 @@ struct StockRow: View {
     var body: some View {
         Text(stock.name)
             .font(.body)
-            .foregroundColor(.primary)
+            .foregroundColor(.white)
             .lineLimit(1)
-            
     }
 }
 

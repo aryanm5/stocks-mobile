@@ -25,36 +25,63 @@ struct AllStocks: View {
     
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: columns, spacing: 20) {
-                Section {
-                    ForEach(appData.stocks, id: \.self.id) { item in
+            LazyVGrid(columns: columns, spacing: 20, pinnedViews: [.sectionHeaders]) {
+                Section(
+                    header:
+                        HStack(alignment: .bottom) {
+                            Text("Watchlist").font(Font.title3.weight(.heavy))
+                            Spacer()
+                        }
+                        .padding(.leading, 20)
+                        .padding(.top, 15)
+                        .padding(.bottom, -10)
+                ) {
+                    ForEach(appData.stocks.filter { inWatchlist(id: $0.id) }, id: \.self.id) { item in
                         NavigationLink(destination: Text(item.name)) {
                             StockItem(stock: item)
                         }
                         .buttonStyle(PlainButtonStyle())
                         .contextMenu {
-                            if inWatchlist(id: item.id) {
-                                Button(role: .destructive) {
-                                    removeWatchlist(id: item.id)
-                                } label: {
-                                    Label("Remove from Watchlist", systemImage: "minus.circle.fill")
-                                }
-                            } else {
-                                Button {
-                                    addWatchlist(id: item.id)
-                                } label: {
-                                    Label("Add to Watchlist", systemImage: "plus.circle.fill")
-                                }
+                            Button {
+                                removeWatchlist(id: item.id)
+                            } label: {
+                                Label("Remove from Watchlist", systemImage: "minus.circle.fill")
                             }
                         }
+                        
                     }
-                    .padding(.bottom, 25)
+                }
+                
+                Section(
+                    header:
+                        HStack(alignment: .bottom) {
+                            Text("All Stocks").font(Font.title3.weight(.heavy))
+                            Spacer()
+                        }
+                        .padding(.leading, 20)
+                        .padding(.top, 15)
+                        .padding(.bottom, -10)
+                ) {
+                    ForEach(appData.stocks.filter { !inWatchlist(id: $0.id) }, id: \.self.id) { item in
+                        NavigationLink(destination: Text(item.name)) {
+                            StockItem(stock: item)
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                        .contextMenu {
+                            Button {
+                                addWatchlist(id: item.id)
+                            } label: {
+                                Label("Add to Watchlist", systemImage: "plus.circle.fill")
+                            }
+                        }
+                        
+                    }
                 }
             }
-            .navigationTitle("All Stocks")
-            .navigationBarTitleDisplayMode(.inline)
         }
         .padding()
+        .navigationTitle("Stocks")
+        .navigationBarTitleDisplayMode(.inline)
     }
     
     private func inWatchlist(id: String) -> Bool {
@@ -66,7 +93,7 @@ struct AllStocks: View {
         return false
     }
     
-    private func addWatchlist(id: String) {
+    private func addWatchlist(id: String) -> Void {
         withAnimation {
             let newItem = WatchedStock(context: viewContext)
             newItem.id = id
@@ -82,7 +109,7 @@ struct AllStocks: View {
         }
     }
     
-    private func removeWatchlist(id: String) {
+    private func removeWatchlist(id: String) -> Void {
         withAnimation {
             watchlist.filter { $0.id == id }.forEach(viewContext.delete)
             
@@ -103,4 +130,3 @@ struct AllStocks_Previews: PreviewProvider {
         AllStocks().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
-
