@@ -47,7 +47,7 @@ struct Stock: Codable {
 }
 
 struct News: Codable {
-    let lastUpdated: Int
+    let lastUpdated: TimeInterval
     let articles: [Article]
 }
 

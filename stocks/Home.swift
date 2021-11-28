@@ -17,6 +17,8 @@ struct Home: View {
     
     @EnvironmentObject var appData: AppData
     
+    @State private var lastUpdatedText: String = ""
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 30) {
             List {
@@ -25,7 +27,7 @@ struct Home: View {
                         .foregroundColor(.secondary)
                         .font(.subheadline)
                         .padding(.bottom, -5)
-                    Text("Yesterday")
+                    Text(lastUpdatedText)
                         .font(.title2)
                         .bold()
                 }
@@ -78,8 +80,22 @@ struct Home: View {
                 }
                 .padding(.horizontal)
             }
+            .onAppear {
+                setLastUpdatedText()
+            }
         }
         .navigationTitle("Stockscast")
+    }
+    
+    private func setLastUpdatedText() -> Void {
+        if lastUpdatedText.isEmpty {
+            let updateDate = Date(timeIntervalSince1970: appData.news.lastUpdated/1000)
+            
+            let formatter = RelativeDateTimeFormatter()
+            formatter.unitsStyle = .full
+            
+            lastUpdatedText = formatter.localizedString(for: updateDate, relativeTo: Date())
+        }
     }
     
     private func removeWatchlist(id: String) -> Void {

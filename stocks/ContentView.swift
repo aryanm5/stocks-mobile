@@ -30,7 +30,6 @@ struct ContentView: View {
     }
     
     func loadData() async {
-        print("Loading data!")
         
         guard let url = URL(string: "https://api.mittaldev.com/stocks-dev/getStocks") else {
             print("Invalid URL")
