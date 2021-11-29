@@ -35,7 +35,7 @@ struct AllStocks: View {
                             Spacer()
                         }
                         .padding(.leading, 20)
-                        .padding(.top, 15)
+                        .padding(.top, 25)
                         .padding(.bottom, -10)
                 ) {
                     ForEach(appData.stocks.filter { isSearched(stock: $0) && inWatchlist(id: $0.id) }, id: \.self.id) { item in
@@ -82,8 +82,8 @@ struct AllStocks: View {
                     .transition(.scale)
                 }
             }
+            .padding(.horizontal)
         }
-        .padding()
         .searchable(text: $searchText.animation(.spring()))
         .navigationTitle("Stocks")
         .navigationBarTitleDisplayMode(.inline)

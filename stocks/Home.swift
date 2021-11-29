@@ -35,6 +35,7 @@ struct Home: View {
                 .padding()
                 .background(.ultraThickMaterial)
                 .cornerRadius(15)
+                .padding(.top)
                 .listRowBackground(Color.clear)
                 .listRowInsets(EdgeInsets())
                 
@@ -84,7 +85,6 @@ struct Home: View {
                 setLastUpdatedText()
             }
         }
-        .padding(.vertical)
         .navigationTitle("Stockscast")
     }
     
