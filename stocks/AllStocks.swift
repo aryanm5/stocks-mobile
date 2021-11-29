@@ -31,12 +31,17 @@ struct AllStocks: View {
                 Section(
                     header:
                         HStack(alignment: .bottom) {
-                            Text("Watchlist").font(Font.title3.weight(.heavy))
+                            Text("Watchlist")
+                                .font(Font.title3.weight(.heavy))
+                                .padding(5)
+                                .padding(.horizontal, 5)
+                                .background(.ultraThinMaterial)
+                                .cornerRadius(10)
                             Spacer()
                         }
-                        .padding(.leading, 20)
-                        .padding(.top, 25)
-                        .padding(.bottom, -10)
+                        .padding(.leading, 12)
+                        .padding(.top, 20)
+                        .padding(.bottom, -15)
                 ) {
                     ForEach(appData.stocks.filter { isSearched(stock: $0) && inWatchlist(id: $0.id) }, id: \.self.id) { item in
                         NavigationLink(destination: Text(item.name)) {
@@ -58,12 +63,17 @@ struct AllStocks: View {
                 Section(
                     header:
                         HStack(alignment: .bottom) {
-                            Text("All Stocks").font(Font.title3.weight(.heavy))
+                            Text("All Stocks")
+                                .font(Font.title3.weight(.heavy))
+                                .padding(5)
+                                .padding(.horizontal, 5)
+                                .background(.ultraThinMaterial)
+                                .cornerRadius(10)
                             Spacer()
                         }
-                        .padding(.leading, 20)
-                        .padding(.top, 15)
-                        .padding(.bottom, -10)
+                        .padding(.leading, 12)
+                        .padding(.top, 10)
+                        .padding(.bottom, -15)
                 ) {
                     ForEach(appData.stocks.filter { isSearched(stock: $0) && !inWatchlist(id: $0.id) }, id: \.self.id) { item in
                         NavigationLink(destination: Text(item.name)) {

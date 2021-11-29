@@ -16,8 +16,10 @@ struct StockItem: View {
             Text(stock.name)
                 .font(Font.title2)
                 .bold()
+                .foregroundColor(.white)
                 .lineLimit(1)
             Text(stock.ticker)
+                .foregroundColor(.white)
         }
         .padding()
         .frame(
