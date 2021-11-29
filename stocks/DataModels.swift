@@ -14,8 +14,8 @@ class AppData: ObservableObject {
 }
 
 struct Response: Codable {
-    var stocks: [Stock]
-    var news: News
+    let stocks: [Stock]
+    let news: News
 }
 
 struct Rgb: Codable {
