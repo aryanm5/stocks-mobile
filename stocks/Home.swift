@@ -90,9 +90,9 @@ struct Home: View {
     
     private func setLastUpdatedText() -> Void {
         if lastUpdatedText.isEmpty {
-            let updateDate = Date(timeIntervalSince1970: appData.news.lastUpdated/1000)
+            let updateDate: Date = Date(timeIntervalSince1970: appData.news.lastUpdated/1000)
             
-            let formatter = RelativeDateTimeFormatter()
+            let formatter: RelativeDateTimeFormatter = RelativeDateTimeFormatter()
             formatter.unitsStyle = .full
             
             lastUpdatedText = formatter.localizedString(for: updateDate, relativeTo: Date())

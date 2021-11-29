@@ -18,11 +18,11 @@ struct AllStocks: View {
         animation: .default)
     private var watchlist: FetchedResults<WatchedStock>
     
-    @State private var searchText = ""
+    @State private var searchText: String = ""
     
-    let columns = [
+    let columns: [GridItem] = [
         GridItem(.flexible(), spacing: 20),
-        GridItem(.flexible(), spacing: 20),
+        GridItem(.flexible(), spacing: 20)
     ]
     
     var body: some View {
@@ -100,7 +100,7 @@ struct AllStocks: View {
     }
     
     private func isSearched(stock: Stock) -> Bool {
-        let searchTerm = searchText.filter { !$0.isWhitespace }.lowercased()
+        let searchTerm: String = searchText.filter { !$0.isWhitespace }.lowercased()
         
         if searchTerm.isEmpty {
             return true
@@ -121,7 +121,7 @@ struct AllStocks: View {
     
     private func addWatchlist(id: String) -> Void {
         withAnimation {
-            let newItem = WatchedStock(context: viewContext)
+            let newItem: WatchedStock = WatchedStock(context: viewContext)
             newItem.id = id
             
             do {

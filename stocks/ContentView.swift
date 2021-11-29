@@ -31,14 +31,14 @@ struct ContentView: View {
     
     func loadData() async -> Void {
         
-        guard let url = URL(string: "https://api.mittaldev.com/stocks-dev/getStocks") else {
+        guard let url: URL = URL(string: "https://api.mittaldev.com/stocks-dev/getStocks") else {
             print("Invalid URL")
             return
         }
         
         do {
-            let (response, _) = try await URLSession.shared.data(from: url)
-            let decodedResponse = try JSONDecoder().decode(Response.self, from: response)
+            let (response, _): (Data, URLResponse) = try await URLSession.shared.data(from: url)
+            let decodedResponse: Response = try JSONDecoder().decode(Response.self, from: response)
             DispatchQueue.main.async {
                 appData.stocks = decodedResponse.stocks
                 appData.news = decodedResponse.news
