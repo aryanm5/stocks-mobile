@@ -29,7 +29,7 @@ struct ContentView: View {
         }
     }
     
-    func loadData() async {
+    func loadData() async -> Void {
         
         guard let url = URL(string: "https://api.mittaldev.com/stocks-dev/getStocks") else {
             print("Invalid URL")
