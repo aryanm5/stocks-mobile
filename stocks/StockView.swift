@@ -76,6 +76,8 @@ struct StockView: View {
                 .foregroundColor(.secondary)
                 .offset(y: -10)
             }
+            
+            StockDetails(stock: stock)
         }
         .padding(.horizontal)
         .navigationTitle(stock.name)

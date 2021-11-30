@@ -19,6 +19,7 @@
 		2FAA6DB4274A1B2A001D5032 /* StockItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA6DB3274A1B2A001D5032 /* StockItem.swift */; };
 		2FD27BDF2751892200C41E65 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD27BDE2751892200C41E65 /* Home.swift */; };
 		2FDA0E7F2756B1E900F3B09C /* StockHeaderAndPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDA0E7E2756B1E900F3B09C /* StockHeaderAndPrice.swift */; };
+		2FDA0E812756B39700F3B09C /* StockDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDA0E802756B39700F3B09C /* StockDetails.swift */; };
 		2FE57A3E2751A589002F752B /* StockRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE57A3D2751A589002F752B /* StockRow.swift */; };
 		D73272B1A9FF9D1B4FE1BC37 /* Pods_stocks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C42DFFFC2C516EDA6A68E6DE /* Pods_stocks.framework */; };
 /* End PBXBuildFile section */
@@ -37,6 +38,7 @@
 		2FAA6DB3274A1B2A001D5032 /* StockItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockItem.swift; sourceTree = "<group>"; };
 		2FD27BDE2751892200C41E65 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		2FDA0E7E2756B1E900F3B09C /* StockHeaderAndPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockHeaderAndPrice.swift; sourceTree = "<group>"; };
+		2FDA0E802756B39700F3B09C /* StockDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetails.swift; sourceTree = "<group>"; };
 		2FE57A3D2751A589002F752B /* StockRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockRow.swift; sourceTree = "<group>"; };
 		9AAE7369B9EF075B4DE4D552 /* Pods-stocks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stocks.release.xcconfig"; path = "Target Support Files/Pods-stocks/Pods-stocks.release.xcconfig"; sourceTree = "<group>"; };
 		C42DFFFC2C516EDA6A68E6DE /* Pods_stocks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_stocks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,6 +97,7 @@
 			children = (
 				2F3023DE2753887B007B3044 /* StocksApp.swift */,
 				2F0325462755611C0032BCCF /* StockView.swift */,
+				2FDA0E802756B39700F3B09C /* StockDetails.swift */,
 				2FDA0E7E2756B1E900F3B09C /* StockHeaderAndPrice.swift */,
 				2F4B281C2742EB5000B71809 /* ContentView.swift */,
 				2FD27BDE2751892200C41E65 /* Home.swift */,
@@ -235,6 +238,7 @@
 				2F4B28242742EB5100B71809 /* Persistence.swift in Sources */,
 				2F4B281D2742EB5000B71809 /* ContentView.swift in Sources */,
 				2F4B28272742EB5100B71809 /* stocks.xcdatamodeld in Sources */,
+				2FDA0E812756B39700F3B09C /* StockDetails.swift in Sources */,
 				2F3023DF2753887B007B3044 /* StocksApp.swift in Sources */,
 				2FE57A3E2751A589002F752B /* StockRow.swift in Sources */,
 				2FDA0E7F2756B1E900F3B09C /* StockHeaderAndPrice.swift in Sources */,
