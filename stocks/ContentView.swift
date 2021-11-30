@@ -14,10 +14,14 @@ struct ContentView: View {
     @StateObject var appData: AppData = AppData()
     
     @State var loading: Bool = true
+    @State var isError: Bool = false
     
     var body: some View {
         NavigationView {
-            if loading {
+            if isError {
+                Text("Something went wrong.")
+                    .foregroundColor(.secondary)
+            } else if loading {
                 ProgressView()
             } else {
                 Home()
@@ -32,6 +36,7 @@ struct ContentView: View {
     func loadData() async -> Void {
         
         guard let url: URL = URL(string: "https://api.mittaldev.com/stocks-dev/getStocks") else {
+            isError = true
             print("Invalid URL")
             return
         }
@@ -45,6 +50,7 @@ struct ContentView: View {
             }
             loading = false
         } catch let jsonError as NSError {
+            isError = true
             print("Invalid data: \(jsonError)")
         }
     }
