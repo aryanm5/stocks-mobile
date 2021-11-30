@@ -7,4 +7,5 @@ target 'stocks' do
 
   # Pods for stocks
   pod 'RHLinePlot'
+  pod 'MovingNumbersView'
 end

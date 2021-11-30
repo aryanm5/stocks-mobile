@@ -32,7 +32,7 @@ struct AllStocks: View {
                     header:
                         HStack(alignment: .bottom) {
                             Text("Watchlist")
-                                .font(Font.title3.weight(.heavy))
+                                .font(.title3.weight(.heavy))
                                 .padding(5)
                                 .padding(.horizontal, 5)
                                 .background(.ultraThinMaterial)
@@ -43,19 +43,19 @@ struct AllStocks: View {
                         .padding(.top, 20)
                         .padding(.bottom, -15)
                 ) {
-                    ForEach(appData.stocks.filter { isSearched(stock: $0) && inWatchlist(id: $0.id) }, id: \.self.id) { item in
-                        NavigationLink(destination: Text(item.name)) {
-                            StockItem(stock: item)
+                    ForEach(appData.stocks.filter { isSearched(stock: $0) && inWatchlist(id: $0.id) }) { stock in
+                        NavigationLink(destination: StockView(stock: stock)) {
+                            StockItem(stock: stock)
                         }
                         .buttonStyle(PlainButtonStyle())
                         .contextMenu {
                             Button {
-                                removeWatchlist(id: item.id)
+                                removeWatchlist(id: stock.id)
                             } label: {
                                 Label("Remove from Watchlist", systemImage: "minus.circle.fill")
                             }
                         }
-                        .id("\(item.id)\(inWatchlist(id: item.id))")
+                        .id("\(stock.id)\(inWatchlist(id: stock.id))")
                     }
                     .transition(.scale)
                 }
@@ -64,7 +64,7 @@ struct AllStocks: View {
                     header:
                         HStack(alignment: .bottom) {
                             Text("All Stocks")
-                                .font(Font.title3.weight(.heavy))
+                                .font(.title3.weight(.heavy))
                                 .padding(5)
                                 .padding(.horizontal, 5)
                                 .background(.ultraThinMaterial)
@@ -75,19 +75,19 @@ struct AllStocks: View {
                         .padding(.top, 10)
                         .padding(.bottom, -15)
                 ) {
-                    ForEach(appData.stocks.filter { isSearched(stock: $0) && !inWatchlist(id: $0.id) }, id: \.self.id) { item in
-                        NavigationLink(destination: Text(item.name)) {
-                            StockItem(stock: item)
+                    ForEach(appData.stocks.filter { isSearched(stock: $0) && !inWatchlist(id: $0.id) }) { stock in
+                        NavigationLink(destination: StockView(stock: stock)) {
+                            StockItem(stock: stock)
                         }
                         .buttonStyle(PlainButtonStyle())
                         .contextMenu {
                             Button {
-                                addWatchlist(id: item.id)
+                                addWatchlist(id: stock.id)
                             } label: {
                                 Label("Add to Watchlist", systemImage: "plus.circle.fill")
                             }
                         }
-                        .id("\(item.id)\(inWatchlist(id: item.id))")
+                        .id("\(stock.id)\(inWatchlist(id: stock.id))")
                     }
                     .transition(.scale)
                 }

@@ -33,6 +33,7 @@ struct Home: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding()
+                .padding(.vertical, 5)
                 .background(.ultraThickMaterial)
                 .cornerRadius(15)
                 .padding(.top)
@@ -43,7 +44,7 @@ struct Home: View {
                     ForEach(watchlist.map {
                         stock in appData.stocks.first(where: { stock.id == $0.id }) ?? previewStock
                     }, id: \.self.id) { stock in
-                        NavigationLink(destination: Text(stock.name)) {
+                        NavigationLink(destination: StockView(stock: stock)) {
                             StockRow(stock: stock)
                                 .contextMenu {
                                     Button {
@@ -56,7 +57,7 @@ struct Home: View {
                         .padding()
                         .background(LinearGradient(gradient: Gradient(colors: [stock.color1.asColor(), stock.color2.asColor()]), startPoint: .topTrailing, endPoint: .bottomLeading))
                         .cornerRadius(10)
-                        .padding(.bottom, 10)
+                        .padding(.vertical, 5)
                         .listRowSeparator(.hidden)
                         .listRowInsets(EdgeInsets())
                     }

@@ -14,7 +14,7 @@ struct StockItem: View {
         VStack(alignment: .leading) {
             Spacer()
             Text(stock.name)
-                .font(Font.title2)
+                .font(.title2)
                 .bold()
                 .foregroundColor(.white)
                 .lineLimit(1)

@@ -28,7 +28,7 @@ struct Rgb: Codable {
     }
 }
 
-struct Stock: Codable {
+struct Stock: Codable, Identifiable {
     let id: String
     let name: String
     let subtitle: String
@@ -41,7 +41,7 @@ struct Stock: Codable {
     let realtime: String
     let website: String
     let wiki: String
-    let preds: [Double]
+    let preds: [CGFloat]
     let color1: Rgb
     let color2: Rgb
 }
@@ -51,7 +51,7 @@ struct News: Codable {
     let articles: [Article]
 }
 
-struct Article: Codable {
+struct Article: Codable, Identifiable {
     let id: String
     let url: String
     let title: String
