@@ -7,7 +7,6 @@
 
 import SwiftUI
 import RHLinePlot
-import MovingNumbersView
 
 struct DateRange: Identifiable {
     let id: Int
@@ -22,16 +21,16 @@ struct StockView: View {
     let green: Color = Color(red: 33/255, green: 206/255, blue: 153/255)
     let red: Color = Color(red: 244/255, green: 85/255, blue: 49/255)
     
-    let dateRanges: [DateRange] = [DateRange(id: 30, name: "1M"), DateRange(id: 90, name: "3M"), DateRange(id: 180, name: "6M"), DateRange(id: 365, name: "1Y"), DateRange(id: 730, name: "2Y"), DateRange(id: 900, name: "3Y")]
+    let dateRanges: [DateRange] = [DateRange(id: 30, name: "1M"), DateRange(id: 90, name: "3M"), DateRange(id: 180, name: "6M"), DateRange(id: 365, name: "1Y"), DateRange(id: 730, name: "2Y"), DateRange(id: 1095, name: "3Y")]
     
     let today: Date = Date()
     
     @State var currentIndex: Int? = nil
-    @State var dateRange: Int = 900
+    @State var dateRange: Int = 1095
     
     var body: some View {
         ScrollView {
-            stockHeaderAndPrice()
+            StockHeaderAndPrice(stock: stock, currentIndex: currentIndex ?? (dateRange - 1))
             
             VStack {
                 Picker("Time Range", selection: $dateRange) {
@@ -84,44 +83,6 @@ struct StockView: View {
         .environment(\.rhLinePlotConfig, RHLinePlotConfig.default.custom(f: { c in
             c.useLaserLightLinePlotStyle = colorScheme == .dark
         }))
-    }
-    
-    func stockHeaderAndPrice() -> some View {
-        return HStack {
-            VStack(alignment: .leading, spacing: 4) {
-                Text(stock.ticker)
-                    .font(.title2.weight(.heavy))
-                    .foregroundColor(.secondary)
-                buildMovingPriceLabel()
-            }
-            Spacer()
-        }
-        .padding(.horizontal, 5)
-        .padding(.vertical)
-    }
-    
-    func buildMovingPriceLabel() -> some View {
-        let currentIndex = self.currentIndex ?? (dateRange - 1)
-        return HStack(spacing: 2) {
-            Text("$")
-            MovingNumbersView(
-                number: Double(stock.preds[currentIndex >= stock.preds.count ? stock.preds.count - 1 : currentIndex]),
-                numberOfDecimalPlaces: 2,
-                fixedWidth: 100,
-                verticalDigitSpacing: 0,
-                animationDuration: 0.3
-            ) { digit in
-                Text(digit)
-            }.mask(LinearGradient(
-                gradient: Gradient(stops: [
-                    Gradient.Stop(color: .clear, location: 0),
-                    Gradient.Stop(color: .black, location: 0.2),
-                    Gradient.Stop(color: .black, location: 0.8),
-                    Gradient.Stop(color: .clear, location: 1.0)]),
-                startPoint: .top,
-                endPoint: .bottom))
-        }
-        .font(.title.weight(.heavy))
     }
 }
 
