@@ -91,7 +91,7 @@ struct Home: View {
     
     private func setLastUpdatedText() -> Void {
         if lastUpdatedText.isEmpty {
-            let updateDate: Date = Date(timeIntervalSince1970: appData.news.lastUpdated/1000)
+            let updateDate: Date = Date(timeIntervalSince1970: appData.news.lastUpdated)
             
             let formatter: RelativeDateTimeFormatter = RelativeDateTimeFormatter()
             formatter.unitsStyle = .full
