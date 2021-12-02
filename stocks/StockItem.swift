@@ -18,8 +18,11 @@ struct StockItem: View {
                 .bold()
                 .foregroundColor(.white)
                 .lineLimit(1)
-            Text(stock.ticker)
+            Text(stock.subtitle)
                 .foregroundColor(.white)
+                .font(.system(size: 15))
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
         }
         .padding()
         .frame(

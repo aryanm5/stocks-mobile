@@ -25,11 +25,11 @@ struct StockView: View {
     
     let today: Date = Date()
     
-    @State var currentIndex: Int? = nil
-    @State var dateRange: Int = 1095
+    @State private var currentIndex: Int? = nil
+    @State private var dateRange: Int = 365
     
     var body: some View {
-        ScrollView {
+        List {
             StockHeaderAndPrice(stock: stock, currentIndex: currentIndex ?? (dateRange - 1))
             
             VStack {
@@ -65,10 +65,6 @@ struct StockView: View {
                 
                 HStack {
                     Text("Today")
-                    //.padding(5)
-                    //.padding(.horizontal, 5)
-                    //.background(.thinMaterial)
-                    //.clipShape(Capsule())
                     Spacer()
                     Text(Calendar.current.date(byAdding: .day, value: dateRange, to: today)!.formatted(.dateTime.year().month()))
                 }
@@ -79,11 +75,11 @@ struct StockView: View {
             
             StockDetails(stock: stock)
         }
-        .padding(.horizontal)
+        //.padding(.horizontal)
         .navigationTitle(stock.name)
         .navigationBarTitleDisplayMode(.inline)
         .environment(\.rhLinePlotConfig, RHLinePlotConfig.default.custom(f: { c in
-            c.useLaserLightLinePlotStyle = colorScheme == .dark
+            c.useLaserLightLinePlotStyle = false//colorScheme == .dark
         }))
     }
 }

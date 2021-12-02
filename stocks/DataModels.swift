@@ -38,9 +38,9 @@ struct Stock: Codable, Identifiable {
     let max: Int
     let min: Int
     let current: Double
-    let realtime: String
-    let website: String
-    let wiki: String
+    let realtime: URL
+    let website: URL
+    let wiki: URL
     let preds: [CGFloat]
     let color1: Rgb
     let color2: Rgb
@@ -53,10 +53,10 @@ struct News: Codable {
 
 struct Article: Codable, Identifiable {
     let id: String
-    let url: String
+    let url: URL
     let title: String
     let publisher: String
-    let thumbnail: String
+    let thumbnail: URL
     let keywords: [String]
     let tickers: [String]
 }
@@ -71,9 +71,9 @@ let previewStock: Stock = Stock(
     max: 848,
     min: 33,
     current: 180.0,
-    realtime: "https://www.google.com/finance/quote/AAPL:NASDAQ",
-    website: "https://www.apple.com/",
-    wiki: "https://en.m.wikipedia.org/wiki/Apple_Inc.",
+    realtime: URL(string:"https://www.google.com/finance/quote/AAPL:NASDAQ")!,
+    website: URL(string: "https://www.apple.com/")!,
+    wiki: URL(string:"https://en.m.wikipedia.org/wiki/Apple_Inc.")!,
     preds: [
         173.12,
         172.39,

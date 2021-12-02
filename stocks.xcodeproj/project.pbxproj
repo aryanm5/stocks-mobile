@@ -20,6 +20,7 @@
 		2FD27BDF2751892200C41E65 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD27BDE2751892200C41E65 /* Home.swift */; };
 		2FDA0E7F2756B1E900F3B09C /* StockHeaderAndPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDA0E7E2756B1E900F3B09C /* StockHeaderAndPrice.swift */; };
 		2FDA0E812756B39700F3B09C /* StockDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDA0E802756B39700F3B09C /* StockDetails.swift */; };
+		2FE3CF1927582C7900E30E09 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 2FE3CF1827582C7900E30E09 /* BetterSafariView */; };
 		2FE57A3E2751A589002F752B /* StockRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE57A3D2751A589002F752B /* StockRow.swift */; };
 		D73272B1A9FF9D1B4FE1BC37 /* Pods_stocks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C42DFFFC2C516EDA6A68E6DE /* Pods_stocks.framework */; };
 /* End PBXBuildFile section */
@@ -51,6 +52,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D73272B1A9FF9D1B4FE1BC37 /* Pods_stocks.framework in Frameworks */,
+				2FE3CF1927582C7900E30E09 /* BetterSafariView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +141,9 @@
 			dependencies = (
 			);
 			name = stocks;
+			packageProductDependencies = (
+				2FE3CF1827582C7900E30E09 /* BetterSafariView */,
+			);
 			productName = stocks;
 			productReference = 2F4B28172742EB5000B71809 /* Stockscast.app */;
 			productType = "com.apple.product-type.application";
@@ -167,6 +172,9 @@
 				Base,
 			);
 			mainGroup = 2F4B280E2742EB5000B71809;
+			packageReferences = (
+				2FE3CF1727582C7900E30E09 /* XCRemoteSwiftPackageReference "BetterSafariView" */,
+			);
 			productRefGroup = 2F4B28182742EB5000B71809 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -455,6 +463,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2FE3CF1727582C7900E30E09 /* XCRemoteSwiftPackageReference "BetterSafariView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stleamist/BetterSafariView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2FE3CF1827582C7900E30E09 /* BetterSafariView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2FE3CF1727582C7900E30E09 /* XCRemoteSwiftPackageReference "BetterSafariView" */;
+			productName = BetterSafariView;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		2F4B28252742EB5100B71809 /* stocks.xcdatamodeld */ = {

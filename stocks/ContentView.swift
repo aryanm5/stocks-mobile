@@ -13,8 +13,8 @@ struct ContentView: View {
     
     @StateObject var appData: AppData = AppData()
     
-    @State var loading: Bool = true
-    @State var isError: Bool = false
+    @State private var loading: Bool = true
+    @State private var isError: Bool = false
     
     var body: some View {
         NavigationView {
