@@ -11,7 +11,7 @@ import CoreData
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
-    @StateObject var appData: AppData = AppData()
+    @StateObject private var appData: AppData = AppData()
     
     @State private var loading: Bool = true
     @State private var isError: Bool = false

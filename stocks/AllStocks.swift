@@ -11,7 +11,7 @@ import CoreData
 struct AllStocks: View {
     @Environment(\.managedObjectContext) private var viewContext
     
-    @EnvironmentObject var appData: AppData
+    @EnvironmentObject private var appData: AppData
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \WatchedStock.id, ascending: false)],

@@ -15,7 +15,7 @@ struct Home: View {
         animation: .default)
     private var watchlist: FetchedResults<WatchedStock>
     
-    @EnvironmentObject var appData: AppData
+    @EnvironmentObject private var appData: AppData
     
     @State private var lastUpdatedText: String = ""
     

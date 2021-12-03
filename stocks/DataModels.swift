@@ -8,7 +8,7 @@
 import SwiftUI
 import Foundation
 
-class AppData: ObservableObject {
+final class AppData: ObservableObject {
     @Published var stocks: [Stock] = [Stock]()
     @Published var news: News = News(lastUpdated: 0, articles: [Article]())
 }
