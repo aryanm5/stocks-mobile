@@ -14,7 +14,7 @@ struct DateRange: Identifiable {
 }
 
 struct StockView: View {
-    @Environment(\.colorScheme) var colorScheme
+    //@Environment(\.colorScheme) var colorScheme
     
     let stock: Stock
     
@@ -51,10 +51,10 @@ struct StockView: View {
                         }
                     )
                         .frame(maxWidth: .infinity, minHeight: 300, maxHeight: .infinity)
-                        .foregroundColor(stock.preds[0] <= stock.preds[dateRange > stock.preds.count ? stock.preds.count - 1 : dateRange - 1] ? green : red)
+                        .foregroundColor(stock.preds.first! <= stock.preds[dateRange > stock.preds.count ? stock.preds.count - 1 : dateRange - 1] ? green : red)
                     
                     HStack {
-                        Text(String(format: "%.0f", stock.preds[0]))
+                        Text(String(format: "%.0f", stock.preds.first!))
                         Spacer()
                         Text(String(format: "%.0f", stock.preds[dateRange > stock.preds.count ? stock.preds.count - 1 : dateRange - 1]))
                     }
@@ -75,7 +75,6 @@ struct StockView: View {
             
             StockDetails(stock: stock)
         }
-        //.padding(.horizontal)
         .navigationTitle(stock.name)
         .navigationBarTitleDisplayMode(.inline)
         .environment(\.rhLinePlotConfig, RHLinePlotConfig.default.custom(f: { c in

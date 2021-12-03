@@ -1,20 +1,24 @@
 PODS:
+  - BottomSheetSwiftUI (2.4.0)
   - MovingNumbersView (0.1.0)
   - RHLinePlot (0.1.0)
 
 DEPENDENCIES:
+  - BottomSheetSwiftUI
   - MovingNumbersView
   - RHLinePlot
 
 SPEC REPOS:
   trunk:
+    - BottomSheetSwiftUI
     - MovingNumbersView
     - RHLinePlot
 
 SPEC CHECKSUMS:
+  BottomSheetSwiftUI: c176c3022969d6383deaa388dd011199cc50f5bd
   MovingNumbersView: 24af6d9dbf3979108a7a2a1c77ba23bd8925dc35
   RHLinePlot: ee1d4c933363f9efc37c1264bf46b7db6aca462a
 
-PODFILE CHECKSUM: a9568f2b9f91281cd9f25a2cd453ab09219c408b
+PODFILE CHECKSUM: d9d4621df6684e1ff3df78948da8abcd31347ebd
 
 COCOAPODS: 1.11.2

@@ -13,14 +13,26 @@ struct StockDetails: View {
     let stock: Stock
     
     @State private var activeUrl: URL? = nil
-    
+        
     var body: some View {
-        Section(header: Text("Links")) {
-            StockLink(url: stock.realtime, display: "Google Finance", openLink: openLink)
-            StockLink(url: stock.wiki, display: "Wikipedia", openLink: openLink)
-            StockLink(url: stock.website, display: stock.website.absoluteString.components(separatedBy: "://")[1].components(separatedBy: "/")[0].replacingOccurrences(of: "www.", with: "").capitalizedFirst(), openLink: openLink)
+        if !stock.preds.isEmpty {
+            Section(header: Text("Prices")) {
+                HStack {
+                    VStack(spacing: 5) {
+                        PriceRow(name: "First", value: stock.preds.first!, days: 0)
+                        PriceRow(name: "Last", value: stock.preds.last!, days: stock.preds.count)
+                    }
+                    Divider()
+                        .padding(.horizontal, 5)
+                    VStack(spacing: 5) {
+                        PriceRow(name: "High", value: stock.preds[stock.max], days: stock.max)
+                        PriceRow(name: "Low", value: stock.preds[stock.min], days: stock.min)
+                    }
+                }
+                .padding(.vertical, 5)
+            }
         }
-        Section(header: Text("About \(stock.name)")) {
+        Section(header: Text("About")) {
             Text(stock.desc)
                 .padding(.vertical, 5)
                 .safariView(item: $activeUrl) { activeUrl in
@@ -31,6 +43,11 @@ struct StockDetails: View {
                         )
                     )
                 }
+        }
+        Section(header: Text("Links")) {
+            StockLink(url: stock.realtime, display: "Google Finance", openLink: openLink)
+            StockLink(url: stock.wiki, display: "Wikipedia", openLink: openLink)
+            StockLink(url: stock.website, display: stock.website.absoluteString.components(separatedBy: "://")[1].components(separatedBy: "/")[0].replacingOccurrences(of: "www.", with: "").capitalizedFirst(), openLink: openLink)
         }
     }
     
@@ -55,7 +72,26 @@ private func share(url: URL) -> Void {
     }
 }
 
-struct StockLink: View {
+private struct PriceRow: View {
+    let name: String
+    let value: Double
+    let days: Int
+    
+    var body: some View {
+        HStack {
+            Text(name)
+                .foregroundColor(.secondary)
+            Spacer()
+            VStack(alignment: .trailing) {
+                Text(String(format: "%.2f", value))
+                    .font(.system(size: 14).monospacedDigit())
+            }
+        }
+        .font(.system(size: 14))
+    }
+}
+
+private struct StockLink: View {
     let url: URL
     let display: String
     let openLink: (_ url: URL) -> Void
