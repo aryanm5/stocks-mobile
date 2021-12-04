@@ -6,6 +6,11 @@
 //
 
 import SwiftUI
+import BottomSheetSwiftUI
+
+enum NewsBottomSheetPosition: CGFloat, CaseIterable {
+    case top = 0.975, middle = 0.3, bottom = 0.125
+}
 
 struct Home: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -18,6 +23,7 @@ struct Home: View {
     @EnvironmentObject private var appData: AppData
     
     @State private var lastUpdatedText: String = ""
+    @State private var bottomSheetPosition: NewsBottomSheetPosition = .middle
     
     var body: some View {
         VStack(alignment: .leading, spacing: 30) {
@@ -87,6 +93,23 @@ struct Home: View {
             }
         }
         .navigationTitle("Stockscast")
+        .toolbar {
+            NavigationLink(destination: Text("Settings View")) {
+                Image(systemName: "gear")
+            }
+        }
+        .bottomSheet(bottomSheetPosition: $bottomSheetPosition, options: [.appleScrollBehavior], headerContent: {
+            VStack(alignment: .leading) {
+                Text("Ticker News")
+                    .font(.title).bold()
+                
+                Divider()
+            }
+        }) {
+            NewsView()
+                .padding(.top)
+                .padding(.horizontal, 10)
+        }
     }
     
     private func setLastUpdatedText() -> Void {

@@ -57,6 +57,7 @@ struct Article: Codable, Identifiable {
     let title: String
     let publisher: String
     let thumbnail: URL
+    let publishDate: TimeInterval
     let keywords: [String]
     let tickers: [String]
 }
@@ -84,4 +85,15 @@ let previewStock: Stock = Stock(
     ],
     color1: Rgb(r: 0, g: 0, b: 0),
     color2: Rgb(r: 103, g: 103, b: 103)
+)
+
+let previewArticle: Article = Article(
+    id: "articleId",
+    url: URL(string: "https://google.com")!,
+    title: "Google Article",
+    publisher: "The Previewer",
+    thumbnail: URL(string: "https://images.wsj.net/im-444961")!,
+    publishDate: 1637911800,
+    keywords: ["google", "news", "wow"],
+    tickers: ["GOOGL"]
 )

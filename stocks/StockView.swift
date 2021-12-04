@@ -30,9 +30,9 @@ struct StockView: View {
     
     var body: some View {
         List {
+            VStack {
             StockHeaderAndPrice(stock: stock, currentIndex: currentIndex ?? (dateRange - 1))
             
-            VStack {
                 Picker("Time Range", selection: $dateRange) {
                     ForEach(dateRanges) {
                         Text($0.name)
