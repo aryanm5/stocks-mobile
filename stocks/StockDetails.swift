@@ -35,6 +35,7 @@ struct StockDetails: View {
         Section(header: Text("About")) {
             Text(stock.desc)
                 .padding(.vertical, 5)
+                .textSelection(.enabled)
                 .safariView(item: $activeUrl) { activeUrl in
                     SafariView(
                         url: activeUrl,
