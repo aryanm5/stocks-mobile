@@ -15,7 +15,7 @@ struct AboutView: View {
                     .padding()
                     .padding(.top, 15)
                 
-                Text("A specialized machine learning model analyzes previous stock behavior to reliably predict future trends. The model is retrained every day to maintain accurate predictions.")
+                Text("Our specialized machine learning model analyzes previous stock behavior to reliably predict future trends. The model is retrained every day to maintain accurate predictions.")
                     .padding()
                 
                 Text("Get started by adding your favorite stocks to your Watchlist.")
