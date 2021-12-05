@@ -98,11 +98,10 @@ struct Home: View {
                 Image(systemName: "gear")
             }
         }
-        .bottomSheet(bottomSheetPosition: $bottomSheetPosition, options: [.appleScrollBehavior], headerContent: {
+        .bottomSheet(bottomSheetPosition: $bottomSheetPosition, options: [], headerContent: {
             VStack(alignment: .leading) {
                 Text("Ticker News")
                     .font(.title).bold()
-                
                 Divider()
             }
         }) {
