@@ -31,8 +31,8 @@ struct StockView: View {
     var body: some View {
         List {
             VStack {
-            StockHeaderAndPrice(stock: stock, currentIndex: currentIndex ?? (dateRange - 1))
-            
+                StockHeaderAndPrice(stock: stock, currentIndex: currentIndex ?? (dateRange - 1))
+                
                 Picker("Time Range", selection: $dateRange) {
                     ForEach(dateRanges) {
                         Text($0.name)
@@ -78,7 +78,7 @@ struct StockView: View {
         .navigationTitle(stock.name)
         .navigationBarTitleDisplayMode(.inline)
         .environment(\.rhLinePlotConfig, RHLinePlotConfig.default.custom(f: { c in
-            c.useLaserLightLinePlotStyle = laserMode//colorScheme == .dark
+            c.useLaserLightLinePlotStyle = false//colorScheme == .dark
         }))
     }
 }

@@ -9,6 +9,13 @@ import SwiftUI
 import MovingNumbersView
 
 struct StockHeaderAndPrice: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \WatchedStock.id, ascending: false)],
+        animation: .default)
+    private var watchlist: FetchedResults<WatchedStock>
+    
     let stock: Stock
     let currentIndex: Int
     
@@ -40,9 +47,50 @@ struct StockHeaderAndPrice: View {
                 .font(.title.weight(.heavy))
             }
             Spacer()
+            if !inWatchlist() {
+                Button(action: addWatchlist) {
+                    HStack(spacing: 5) {
+                        Image(systemName: "plus")
+                        Text("Watch")
+                            .bold()
+                    }
+                }
+                .buttonStyle(PlainButtonStyle())
+                .font(.system(size: 14))
+                .foregroundColor(.white)
+                .padding(5)
+                .padding(.horizontal, 5)
+                .background(.blue)
+                .clipShape(Capsule())
+            }
         }
         .padding(.horizontal, 5)
         .padding(.vertical)
+    }
+    
+    private func inWatchlist() -> Bool {
+        for item in watchlist {
+            if item.id == stock.id {
+                return true
+            }
+        }
+        return false
+    }
+    
+    private func addWatchlist() -> Void {
+        withAnimation {
+            let newItem: WatchedStock = WatchedStock(context: viewContext)
+            newItem.id = stock.id
+            
+            do {
+                try viewContext.save()
+            } catch {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+        }
     }
 }
 
