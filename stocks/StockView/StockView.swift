@@ -78,7 +78,7 @@ struct StockView: View {
         .navigationTitle(stock.name)
         .navigationBarTitleDisplayMode(.inline)
         .environment(\.rhLinePlotConfig, RHLinePlotConfig.default.custom(f: { c in
-            c.useLaserLightLinePlotStyle = false//colorScheme == .dark
+            c.useLaserLightLinePlotStyle = laserMode//colorScheme == .dark
         }))
     }
 }
