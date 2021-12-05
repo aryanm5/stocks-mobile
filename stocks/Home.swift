@@ -94,8 +94,10 @@ struct Home: View {
         }
         .navigationTitle("Stockscast")
         .toolbar {
-            NavigationLink(destination: Text("Settings View")) {
-                Image(systemName: "gear")
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink(destination: SettingsView()) {
+                    Image(systemName: "gear")
+                }
             }
         }
         .bottomSheet(bottomSheetPosition: $bottomSheetPosition, options: [], headerContent: {
