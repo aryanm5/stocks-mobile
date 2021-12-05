@@ -14,7 +14,7 @@ struct DateRange: Identifiable {
 }
 
 struct StockView: View {
-    //@Environment(\.colorScheme) var colorScheme
+    @AppStorage("laserMode") var laserMode: Bool = false
     
     let stock: Stock
     
@@ -78,7 +78,7 @@ struct StockView: View {
         .navigationTitle(stock.name)
         .navigationBarTitleDisplayMode(.inline)
         .environment(\.rhLinePlotConfig, RHLinePlotConfig.default.custom(f: { c in
-            c.useLaserLightLinePlotStyle = false//colorScheme == .dark
+            c.useLaserLightLinePlotStyle = laserMode//colorScheme == .dark
         }))
     }
 }

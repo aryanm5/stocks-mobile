@@ -15,7 +15,7 @@ struct SettingsView: View {
     var body: some View {
         List {
             Section {
-                NavigationLink(destination: CustomizationView()) {
+                NavigationLink(destination: CustomizeView()) {
                     SettingsRow(item: .custom)
                 }
             }

@@ -47,29 +47,41 @@ struct Home: View {
                 .listRowInsets(EdgeInsets())
                 
                 Section(header: Text("Watchlist")) {
-                    ForEach(watchlist.map {
-                        stock in appData.stocks.first(where: { stock.id == $0.id }) ?? previewStock
-                    }, id: \.self.id) { stock in
-                        NavigationLink(destination: StockView(stock: stock)) {
-                            StockRow(stock: stock)
-                                .contextMenu {
-                                    Button {
-                                        removeWatchlist(id: stock.id)
-                                    } label: {
-                                        Label("Remove from Watchlist", systemImage: "minus.circle.fill")
-                                    }
-                                }
+                    if watchlist.isEmpty {
+                        HStack {
+                            Spacer()
+                            Text("Your watchlist is empty.")
+                                .multilineTextAlignment(.center)
+                                .foregroundColor(.secondary)
+                                .font(.subheadline)
+                            Spacer()
                         }
-                        .padding()
-                        .background(LinearGradient(gradient: Gradient(colors: [stock.color1.asColor(), stock.color2.asColor()]), startPoint: .topTrailing, endPoint: .bottomLeading))
-                        .cornerRadius(10)
-                        .padding(.vertical, 5)
+                        .listRowBackground(Color.clear)
                         .listRowSeparator(.hidden)
-                        .listRowInsets(EdgeInsets())
+                    } else {
+                        ForEach(watchlist.map {
+                            stock in appData.stocks.first(where: { stock.id == $0.id }) ?? previewStock
+                        }, id: \.self.id) { stock in
+                            NavigationLink(destination: StockView(stock: stock)) {
+                                StockRow(stock: stock)
+                                    .contextMenu {
+                                        Button {
+                                            removeWatchlist(id: stock.id)
+                                        } label: {
+                                            Label("Remove from Watchlist", systemImage: "minus.circle.fill")
+                                        }
+                                    }
+                            }
+                            .padding()
+                            .background(LinearGradient(gradient: Gradient(colors: [stock.color1.asColor(), stock.color2.asColor()]), startPoint: .topTrailing, endPoint: .bottomLeading))
+                            .cornerRadius(10)
+                            .padding(.vertical, 5)
+                            .listRowSeparator(.hidden)
+                            .listRowInsets(EdgeInsets())
+                        }
+                        .onDelete(perform: deleteItems)
+                        .listRowBackground(Color.clear)
                     }
-                    .onDelete(perform: deleteItems)
-                    .listRowBackground(Color.clear)
-                    
                     ZStack {
                         HStack {
                             Spacer()
