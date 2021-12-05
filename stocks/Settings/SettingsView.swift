@@ -39,6 +39,7 @@ struct SettingsView: View {
         }
         .listStyle(InsetGroupedListStyle())
         .navigationTitle("Settings")
+        .navigationBarTitleDisplayMode(.inline)
     }
     
     var footer: some View {
