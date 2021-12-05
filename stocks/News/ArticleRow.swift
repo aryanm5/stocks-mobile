@@ -32,7 +32,7 @@ struct ArticleRow: View {
                         .bold()
                         .padding(.top, 5)
                 }
-                AsyncImage(url: URL(string: "https://images.wsj.net/im-444961")!) { image in
+                AsyncImage(url: article.thumbnail) { image in
                     image.resizable()
                         .aspectRatio(contentMode: .fill)
                 } placeholder: {

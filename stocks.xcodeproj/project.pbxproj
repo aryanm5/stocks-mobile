@@ -111,22 +111,14 @@
 		2F4B28192742EB5000B71809 /* stocks */ = {
 			isa = PBXGroup;
 			children = (
-				2F3023DE2753887B007B3044 /* StocksApp.swift */,
-				2F0325462755611C0032BCCF /* StockView.swift */,
-				2FDA0E802756B39700F3B09C /* StockDetails.swift */,
-				2FDA0E7E2756B1E900F3B09C /* StockHeaderAndPrice.swift */,
-				2F4B281C2742EB5000B71809 /* ContentView.swift */,
-				2FD27BDE2751892200C41E65 /* Home.swift */,
-				2FAC8BAC275B5090009FDB76 /* NewsView.swift */,
-				2FAC8BAE275B5415009FDB76 /* ArticleRow.swift */,
+				2FFC27B1275CDC4300D1987D /* StocksApp */,
+				2FFC27B0275CDC2D00D1987D /* AllStocks */,
+				2FFC27AF275CDC1F00D1987D /* Home */,
+				2FFC27AE275CDA4800D1987D /* News */,
+				2FFC27AD275CDA1100D1987D /* StockView */,
 				2FFC27A2275CAF5400D1987D /* Settings */,
-				2FE57A3D2751A589002F752B /* StockRow.swift */,
-				2F4ACB622750AFBF00F511AD /* AllStocks.swift */,
-				2FAA6DB3274A1B2A001D5032 /* StockItem.swift */,
-				2F022F9D274A5A86009C2F15 /* DataModels.swift */,
 				2F4B281E2742EB5100B71809 /* Assets.xcassets */,
 				2F4B28252742EB5100B71809 /* stocks.xcdatamodeld */,
-				2F4B28232742EB5100B71809 /* Persistence.swift */,
 				2F4B28202742EB5100B71809 /* Preview Content */,
 			);
 			path = stocks;
@@ -150,6 +142,54 @@
 				2FFC27AB275CB69100D1987D /* AboutView.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		2FFC27AD275CDA1100D1987D /* StockView */ = {
+			isa = PBXGroup;
+			children = (
+				2F0325462755611C0032BCCF /* StockView.swift */,
+				2FDA0E802756B39700F3B09C /* StockDetails.swift */,
+				2FDA0E7E2756B1E900F3B09C /* StockHeaderAndPrice.swift */,
+			);
+			path = StockView;
+			sourceTree = "<group>";
+		};
+		2FFC27AE275CDA4800D1987D /* News */ = {
+			isa = PBXGroup;
+			children = (
+				2FAC8BAC275B5090009FDB76 /* NewsView.swift */,
+				2FAC8BAE275B5415009FDB76 /* ArticleRow.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		2FFC27AF275CDC1F00D1987D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				2FD27BDE2751892200C41E65 /* Home.swift */,
+				2FE57A3D2751A589002F752B /* StockRow.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		2FFC27B0275CDC2D00D1987D /* AllStocks */ = {
+			isa = PBXGroup;
+			children = (
+				2F4ACB622750AFBF00F511AD /* AllStocks.swift */,
+				2FAA6DB3274A1B2A001D5032 /* StockItem.swift */,
+			);
+			path = AllStocks;
+			sourceTree = "<group>";
+		};
+		2FFC27B1275CDC4300D1987D /* StocksApp */ = {
+			isa = PBXGroup;
+			children = (
+				2F3023DE2753887B007B3044 /* StocksApp.swift */,
+				2F4B281C2742EB5000B71809 /* ContentView.swift */,
+				2F022F9D274A5A86009C2F15 /* DataModels.swift */,
+				2F4B28232742EB5100B71809 /* Persistence.swift */,
+			);
+			path = StocksApp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

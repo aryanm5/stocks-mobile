@@ -14,11 +14,6 @@ struct NewsView: View {
         ScrollView {
             ForEach(appData.news.articles) { article in
                 ArticleRow(article: article)
-                ArticleRow(article: article)
-                ArticleRow(article: article)
-                ArticleRow(article: article)
-                ArticleRow(article: article)
-                ArticleRow(article: article)
             }
         }
     }
