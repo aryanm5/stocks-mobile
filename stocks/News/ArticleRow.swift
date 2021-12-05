@@ -32,6 +32,7 @@ struct ArticleRow: View {
                         .bold()
                         .padding(.top, 5)
                 }
+                Spacer()
                 AsyncImage(url: article.thumbnail) { image in
                     image.resizable()
                         .aspectRatio(contentMode: .fill)
@@ -42,7 +43,7 @@ struct ArticleRow: View {
                 .cornerRadius(10)
             }
         }
-        .padding(.horizontal, 10)
+        .padding(.horizontal)
         .contextMenu {
             Button {
                 openUrl()
