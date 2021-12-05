@@ -107,7 +107,6 @@ struct Home: View {
         }) {
             NewsView()
                 .padding(.top)
-                .padding(.horizontal, 10)
         }
     }
     

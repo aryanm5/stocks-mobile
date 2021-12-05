@@ -42,6 +42,7 @@ struct ArticleRow: View {
                 .cornerRadius(10)
             }
         }
+        .padding(.horizontal, 10)
         .contextMenu {
             Button {
                 openUrl()
