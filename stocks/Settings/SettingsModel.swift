@@ -9,11 +9,10 @@ import SwiftUI
 
 enum SettingsItem: Int {
     
-    case custom, rate, share, feedback, about
+    case rate, share, feedback, about
     
     var title: String {
         switch self {
-        case .custom: return "Customize"
         case .rate: return "Rate the App"
         case .share: return "Share"
         case .feedback: return "Feedback"
@@ -23,7 +22,6 @@ enum SettingsItem: Int {
     
     var subtitle: String {
         switch self {
-        case .custom: return "Laser mode and app icons"
         case .rate: return "Are you loving it?"
         case .share: return "Tell your friends!"
         case .feedback: return "aryan@mittaldev.com"
@@ -33,7 +31,6 @@ enum SettingsItem: Int {
     
     var iconName: String {
         switch self {
-        case .custom: return "paintbrush"
         case .rate: return "star.fill"
         case .share: return "square.and.arrow.up"
         case .feedback: return "at"
@@ -43,7 +40,6 @@ enum SettingsItem: Int {
     
     var color: Color {
         switch self {
-        case .custom: return .blue
         case .rate: return .pink
         case .share: return .green
         case .feedback: return .blue

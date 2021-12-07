@@ -27,7 +27,6 @@
 		2FFC27A4275CAF7C00D1987D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFC27A3275CAF7C00D1987D /* SettingsView.swift */; };
 		2FFC27A6275CB10D00D1987D /* SettingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFC27A5275CB10D00D1987D /* SettingsRow.swift */; };
 		2FFC27A8275CB1C600D1987D /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFC27A7275CB1C600D1987D /* SettingsModel.swift */; };
-		2FFC27AA275CB4C000D1987D /* CustomizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFC27A9275CB4C000D1987D /* CustomizeView.swift */; };
 		2FFC27AC275CB69100D1987D /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFC27AB275CB69100D1987D /* AboutView.swift */; };
 		D73272B1A9FF9D1B4FE1BC37 /* Pods_stocks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C42DFFFC2C516EDA6A68E6DE /* Pods_stocks.framework */; };
 /* End PBXBuildFile section */
@@ -53,7 +52,6 @@
 		2FFC27A3275CAF7C00D1987D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2FFC27A5275CB10D00D1987D /* SettingsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRow.swift; sourceTree = "<group>"; };
 		2FFC27A7275CB1C600D1987D /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
-		2FFC27A9275CB4C000D1987D /* CustomizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeView.swift; sourceTree = "<group>"; };
 		2FFC27AB275CB69100D1987D /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		9AAE7369B9EF075B4DE4D552 /* Pods-stocks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stocks.release.xcconfig"; path = "Target Support Files/Pods-stocks/Pods-stocks.release.xcconfig"; sourceTree = "<group>"; };
 		C42DFFFC2C516EDA6A68E6DE /* Pods_stocks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_stocks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,7 +136,6 @@
 				2FFC27A3275CAF7C00D1987D /* SettingsView.swift */,
 				2FFC27A5275CB10D00D1987D /* SettingsRow.swift */,
 				2FFC27A7275CB1C600D1987D /* SettingsModel.swift */,
-				2FFC27A9275CB4C000D1987D /* CustomizeView.swift */,
 				2FFC27AB275CB69100D1987D /* AboutView.swift */,
 			);
 			path = Settings;
@@ -314,7 +311,6 @@
 			files = (
 				2FFC27A4275CAF7C00D1987D /* SettingsView.swift in Sources */,
 				2F4B28242742EB5100B71809 /* Persistence.swift in Sources */,
-				2FFC27AA275CB4C000D1987D /* CustomizeView.swift in Sources */,
 				2FAC8BAF275B5415009FDB76 /* ArticleRow.swift in Sources */,
 				2F4B281D2742EB5000B71809 /* ContentView.swift in Sources */,
 				2F4B28272742EB5100B71809 /* stocks.xcdatamodeld in Sources */,

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @AppStorage("laserMode") var laserMode: Bool = false
+    
     let rateURL: URL = URL(string: "itms-apps://apps.apple.com/app/id1590957645?action=write-review")!
     let shareURL: URL = URL(string: "https://apps.apple.com/app/id1590957645")!
     let feedbackURL: URL = URL(string: "mailto:aryan@mittaldev.com")!
@@ -15,8 +17,16 @@ struct SettingsView: View {
     var body: some View {
         List {
             Section {
-                NavigationLink(destination: CustomizeView()) {
-                    SettingsRow(item: .custom)
+                VStack(alignment: .leading) {
+                    Toggle("Laser Mode", isOn: $laserMode)
+                    Text("Special laser effect for graphs")
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+                }
+            }
+            Section {
+                VStack {
+                    Text("App Icon")
                 }
             }
             

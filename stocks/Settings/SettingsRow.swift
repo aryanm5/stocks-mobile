@@ -39,6 +39,6 @@ struct SettingsRow: View {
 
 struct SettingsRow_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsRow(item: .custom)
+        SettingsRow(item: .rate)
     }
 }
