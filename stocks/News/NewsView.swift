@@ -11,11 +11,16 @@ struct NewsView: View {
     @EnvironmentObject private var appData: AppData
     
     var body: some View {
-        ScrollView {
+        List {
             ForEach(appData.news.articles) { article in
                 ArticleRow(article: article)
+                    .listRowInsets(EdgeInsets())
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
             }
         }
+        .listStyle(.plain)
+        .padding(.top, -5)
     }
 }
 

@@ -114,7 +114,7 @@ struct Home: View {
         }
         .bottomSheet(bottomSheetPosition: $bottomSheetPosition, options: [], headerContent: {
             VStack(alignment: .leading) {
-                Text("Ticker News")
+                Text("News")
                     .font(.title).bold()
                 Divider()
             }

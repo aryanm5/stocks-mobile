@@ -44,6 +44,7 @@ struct ArticleRow: View {
             }
         }
         .padding(.horizontal)
+        .padding(.vertical, 5)
         .contextMenu {
             Button {
                 openUrl()
