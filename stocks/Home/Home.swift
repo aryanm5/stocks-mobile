@@ -94,7 +94,7 @@ struct Home: View {
                         
                         NavigationLink(destination: AllStocks().environmentObject(appData)) {
                             EmptyView()
-                        }.buttonStyle(PlainButtonStyle())
+                        }.buttonStyle(.plain)
                     }
                     .listRowBackground(Color.clear)
                 }

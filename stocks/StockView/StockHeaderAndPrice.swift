@@ -55,7 +55,7 @@ struct StockHeaderAndPrice: View {
                             .bold()
                     }
                 }
-                .buttonStyle(PlainButtonStyle())
+                .buttonStyle(.plain)
                 .font(.system(size: 14))
                 .foregroundColor(.white)
                 .padding(5)

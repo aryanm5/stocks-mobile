@@ -62,7 +62,7 @@ struct ArticleRow: View {
                 Label("Share Story", systemImage: "square.and.arrow.up")
             }
         }
-        .buttonStyle(PlainButtonStyle())
+        .buttonStyle(.plain)
         .onAppear {
             setPublished()
         }

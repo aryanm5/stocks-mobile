@@ -47,7 +47,7 @@ struct AllStocks: View {
                         NavigationLink(destination: StockView(stock: stock)) {
                             StockItem(stock: stock)
                         }
-                        .buttonStyle(PlainButtonStyle())
+                        .buttonStyle(.plain)
                         .contextMenu {
                             Button {
                                 removeWatchlist(id: stock.id)
@@ -79,7 +79,7 @@ struct AllStocks: View {
                         NavigationLink(destination: StockView(stock: stock)) {
                             StockItem(stock: stock)
                         }
-                        .buttonStyle(PlainButtonStyle())
+                        .buttonStyle(.plain)
                         .contextMenu {
                             Button {
                                 addWatchlist(id: stock.id)

@@ -37,7 +37,7 @@ struct SettingsView: View {
                 }
             }
         }
-        .listStyle(InsetGroupedListStyle())
+        .listStyle(.insetGrouped) //InsetGroupedListStyle()
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.inline)
     }
