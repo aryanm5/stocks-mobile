@@ -12,6 +12,8 @@ struct SettingsView: View {
     
     @State private var currentIcon: String? = UIApplication.shared.alternateIconName
     
+    let icons: [CustomIcon] = [.original, .light, .dark, .mono, .gold]
+    
     let rateURL: URL = URL(string: "itms-apps://apps.apple.com/app/id1590957645?action=write-review")!
     let shareURL: URL = URL(string: "https://apps.apple.com/app/id1590957645")!
     let feedbackURL: URL = URL(string: "mailto:aryan@mittaldev.com")!
@@ -26,12 +28,10 @@ struct SettingsView: View {
                         .foregroundColor(.secondary)
                 }
             }
-            Section {
-                Text("App Icon")
-                IconRow(iconName: nil, imageName: "AppImage", display: "Original", currentIcon: $currentIcon)
-                IconRow(iconName: "DarkIcon", imageName: "DarkImage", display: "Simple Light", currentIcon: $currentIcon)
-                IconRow(iconName: "DarkIcon", imageName: "DarkImage", display: "Simple Dark", currentIcon: $currentIcon)
-                IconRow(iconName: "DarkIcon", imageName: "DarkImage", display: "Gold Deluxe", currentIcon: $currentIcon)
+            Section(header: Text("App Icon")) {
+                ForEach(icons, id: \.image) { icon in
+                    IconRow(icon: icon, currentIcon: $currentIcon)
+                }
             }
             
             Section(footer: footer) {
@@ -83,29 +83,27 @@ struct SettingsView: View {
 }
 
 struct IconRow: View {
-    let iconName: String?
-    let imageName: String
-    let display: String
+    let icon: CustomIcon
     
     @Binding var currentIcon: String?
     
     var body: some View {
         Button(action: {
-            UIApplication.shared.setAlternateIconName(iconName) { error in
+            UIApplication.shared.setAlternateIconName(icon.name) { error in
                 if error == nil {
-                    currentIcon = iconName
+                    currentIcon = icon.name
                 }
             }
         }) {
             HStack(spacing: 20) {
-                Image(imageName)
+                Image(icon.image)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 50)
                     .cornerRadius(10)
-                Text(display)
+                Text(icon.display)
                 Spacer()
-                if currentIcon == iconName {
+                if currentIcon == icon.name {
                     Image(systemName: "checkmark")
                         .foregroundColor(.blue)
                 }
@@ -113,6 +111,40 @@ struct IconRow: View {
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
+    }
+}
+
+enum CustomIcon: Int {
+    case original, light, dark, mono, gold
+    
+    var name: String? {
+        switch self {
+        case .original: return nil
+        case .light: return "LightIcon"
+        case .dark: return "DarkIcon"
+        case .mono: return "MonoIcon"
+        case .gold: return "GoldIcon"
+        }
+    }
+    
+    var image: String {
+        switch self {
+        case .original: return "AppImage"
+        case .light: return "LightImage"
+        case .dark: return "DarkImage"
+        case .mono: return "MonoImage"
+        case .gold: return "GoldImage"
+        }
+    }
+    
+    var display: String {
+        switch self {
+        case .original: return "Original"
+        case .light: return "Simple Light"
+        case .dark: return "Simple Dark"
+        case .mono: return "Mono"
+        case .gold: return "Gold Deluxe"
+        }
     }
 }
 

@@ -61,7 +61,7 @@ struct Home: View {
                     } else {
                         ForEach(watchlist.map {
                             stock in appData.stocks.first(where: { stock.id == $0.id }) ?? previewStock
-                        }, id: \.self.id) { stock in
+                        }, id: \.id) { stock in
                             NavigationLink(destination: StockView(stock: stock)) {
                                 StockRow(stock: stock)
                                     .contextMenu {
