@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2F022F9E274A5A86009C2F15 /* DataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F022F9D274A5A86009C2F15 /* DataModels.swift */; };
 		2F0325472755611C0032BCCF /* StockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0325462755611C0032BCCF /* StockView.swift */; };
+		2F10BE47275F66A1005B7BB4 /* Dark.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F10BE46275F66A1005B7BB4 /* Dark.xcassets */; };
 		2F3023DF2753887B007B3044 /* StocksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3023DE2753887B007B3044 /* StocksApp.swift */; };
 		2F4ACB632750AFBF00F511AD /* AllStocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4ACB622750AFBF00F511AD /* AllStocks.swift */; };
 		2F4B281D2742EB5000B71809 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4B281C2742EB5000B71809 /* ContentView.swift */; };
@@ -34,6 +35,7 @@
 /* Begin PBXFileReference section */
 		2F022F9D274A5A86009C2F15 /* DataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModels.swift; sourceTree = "<group>"; };
 		2F0325462755611C0032BCCF /* StockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockView.swift; sourceTree = "<group>"; };
+		2F10BE46275F66A1005B7BB4 /* Dark.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Dark.xcassets; sourceTree = "<group>"; };
 		2F3023DE2753887B007B3044 /* StocksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksApp.swift; sourceTree = "<group>"; };
 		2F4ACB622750AFBF00F511AD /* AllStocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStocks.swift; sourceTree = "<group>"; };
 		2F4B28172742EB5000B71809 /* Stockscast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stockscast.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +120,7 @@
 				2F4B281E2742EB5100B71809 /* Assets.xcassets */,
 				2F4B28252742EB5100B71809 /* stocks.xcdatamodeld */,
 				2F4B28202742EB5100B71809 /* Preview Content */,
+				2F10BE46275F66A1005B7BB4 /* Dark.xcassets */,
 			);
 			path = stocks;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			files = (
 				2F4B28222742EB5100B71809 /* Preview Assets.xcassets in Resources */,
 				2F4B281F2742EB5100B71809 /* Assets.xcassets in Resources */,
+				2F10BE47275F66A1005B7BB4 /* Dark.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,8 +457,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CE87752A17849157196DF320 /* Pods-stocks.debug.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = Dark;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"stocks/Preview Content\"";
@@ -485,8 +491,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9AAE7369B9EF075B4DE4D552 /* Pods-stocks.release.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = Dark;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"stocks/Preview Content\"";

@@ -10,6 +10,8 @@ import SwiftUI
 struct SettingsView: View {
     @AppStorage("laserMode") var laserMode: Bool = false
     
+    @State private var currentIcon: String? = UIApplication.shared.alternateIconName
+    
     let rateURL: URL = URL(string: "itms-apps://apps.apple.com/app/id1590957645?action=write-review")!
     let shareURL: URL = URL(string: "https://apps.apple.com/app/id1590957645")!
     let feedbackURL: URL = URL(string: "mailto:aryan@mittaldev.com")!
@@ -25,9 +27,11 @@ struct SettingsView: View {
                 }
             }
             Section {
-                VStack {
-                    Text("App Icon")
-                }
+                Text("App Icon")
+                IconRow(iconName: nil, imageName: "AppImage", display: "Original", currentIcon: $currentIcon)
+                IconRow(iconName: "DarkIcon", imageName: "DarkImage", display: "Simple Light", currentIcon: $currentIcon)
+                IconRow(iconName: "DarkIcon", imageName: "DarkImage", display: "Simple Dark", currentIcon: $currentIcon)
+                IconRow(iconName: "DarkIcon", imageName: "DarkImage", display: "Gold Deluxe", currentIcon: $currentIcon)
             }
             
             Section(footer: footer) {
@@ -75,6 +79,40 @@ struct SettingsView: View {
         }
         
         topController.present(viewController, animated: animated, completion: completion)
+    }
+}
+
+struct IconRow: View {
+    let iconName: String?
+    let imageName: String
+    let display: String
+    
+    @Binding var currentIcon: String?
+    
+    var body: some View {
+        Button(action: {
+            UIApplication.shared.setAlternateIconName(iconName) { error in
+                if error == nil {
+                    currentIcon = iconName
+                }
+            }
+        }) {
+            HStack(spacing: 20) {
+                Image(imageName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 50)
+                    .cornerRadius(10)
+                Text(display)
+                Spacer()
+                if currentIcon == iconName {
+                    Image(systemName: "checkmark")
+                        .foregroundColor(.blue)
+                }
+            }
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
     }
 }
 
