@@ -11,6 +11,7 @@ struct SettingsView: View {
     @AppStorage("laserMode") var laserMode: Bool = false
     
     @State private var currentIcon: String? = UIApplication.shared.alternateIconName
+    @State private var updateIcon: Bool = true
     
     let icons: [CustomIcon] = [.original, .light, .dark, .mono, .gold]
     
@@ -28,9 +29,32 @@ struct SettingsView: View {
                         .foregroundColor(.secondary)
                 }
             }
-            Section(header: Text("App Icon")) {
-                ForEach(icons, id: \.image) { icon in
-                    IconRow(icon: icon, currentIcon: $currentIcon)
+            Section {
+                VStack(alignment: .leading) {
+                    Text("App Icon")
+                    Picker(selection: $currentIcon, label: EmptyView()) {
+                        ForEach(icons, id: \.name) { icon in
+                            IconRow(icon: icon, currentIcon: $currentIcon)
+                                .tag(icon.name)
+                        }
+                    }
+                    .labelsHidden()
+                    .onChange(of: currentIcon) { value in
+                        if updateIcon {
+                            UIApplication.shared.setAlternateIconName(value)
+                        } else {
+                            updateIcon = true
+                        }
+                    }
+                    .onChange(of: updateIcon) { value in
+                        if !value {
+                            if currentIcon == UIApplication.shared.alternateIconName {
+                                updateIcon = true
+                            } else {
+                                currentIcon = UIApplication.shared.alternateIconName
+                            }
+                        }
+                    }
                 }
             }
             
@@ -51,9 +75,13 @@ struct SettingsView: View {
                 }
             }
         }
-        .listStyle(.insetGrouped) //InsetGroupedListStyle()
+        .listStyle(.insetGrouped)
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.inline)
+        .task {
+            print("task run")
+            updateIcon = false
+        }
     }
     
     var footer: some View {
@@ -88,29 +116,17 @@ struct IconRow: View {
     @Binding var currentIcon: String?
     
     var body: some View {
-        Button(action: {
-            UIApplication.shared.setAlternateIconName(icon.name) { error in
-                if error == nil {
-                    currentIcon = icon.name
-                }
-            }
-        }) {
-            HStack(spacing: 20) {
-                Image(icon.image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 50)
-                    .cornerRadius(10)
-                Text(icon.display)
-                Spacer()
-                if currentIcon == icon.name {
-                    Image(systemName: "checkmark")
-                        .foregroundColor(.blue)
-                }
-            }
-            .contentShape(Rectangle())
+        HStack(spacing: 20) {
+            Image(icon.image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 50)
+                .cornerRadius(10)
+            Text(icon.display)
+                .foregroundColor(.primary)
         }
-        .buttonStyle(.plain)
+        .contentShape(Rectangle())
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 
