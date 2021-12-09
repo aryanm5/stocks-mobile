@@ -48,7 +48,6 @@ struct StockDetails: View {
         Section(header: Text("Exchange")) {
             Text(stock.exchange)
                 .padding(.vertical, 5)
-                .textSelection(.enabled)
         }
         Section(header: Text("Links")) {
             StockLink(url: stock.realtime, display: "Google Finance", openLink: openLink)
