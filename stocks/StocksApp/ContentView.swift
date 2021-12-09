@@ -48,7 +48,7 @@ struct ContentView: View {
                 appData.news = decodedResponse.news
             }
             loading = false
-        } catch let jsonError as NSError {
+        } catch _ as NSError {
             isError = true
         }
     }
