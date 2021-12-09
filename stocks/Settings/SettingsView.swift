@@ -63,7 +63,7 @@ struct SettingsView: View {
                     SettingsRow(item: .rate)
                 }
                 Button(action: {
-                    present(UIActivityViewController(activityItems: [shareURL], applicationActivities: nil), animated: true)
+                    share()
                 }) {
                     SettingsRow(item: .share)
                 }
@@ -94,18 +94,20 @@ struct SettingsView: View {
             .listRowInsets(EdgeInsets(top: 24.0, leading: 0.0, bottom: 24.0, trailing: 0.0))
     }
     
-    private func openURL(_ url: URL) {
+    private func openURL(_ url: URL) -> Void {
         UIApplication.shared.open(url)
     }
     
-    private func present(_ viewController: UIViewController, animated: Bool, completion: (() -> Void)? = nil) {
-        guard var topController = UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController else { return }
+    private func share() -> Void {
+        let shareActivity: UIActivityViewController = UIActivityViewController(activityItems: [shareURL], applicationActivities: nil)
         
-        while let presentedViewController = topController.presentedViewController {
-            topController = presentedViewController
+        if let vc: UIViewController = UIApplication.shared.windows.first?.rootViewController {
+            shareActivity.popoverPresentationController?.sourceView = vc.view
+            //Setup share activity position on screen on bottom center
+            shareActivity.popoverPresentationController?.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height, width: 0, height: 0)
+            shareActivity.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.down
+            vc.present(shareActivity, animated: true, completion: nil)
         }
-        
-        topController.present(viewController, animated: animated, completion: completion)
     }
 }
 
