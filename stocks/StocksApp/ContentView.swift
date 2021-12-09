@@ -37,7 +37,6 @@ struct ContentView: View {
         
         guard let url: URL = URL(string: "https://api.mittaldev.com/stocks-dev/getStocks") else {
             isError = true
-            print("Invalid URL")
             return
         }
         
@@ -51,7 +50,6 @@ struct ContentView: View {
             loading = false
         } catch let jsonError as NSError {
             isError = true
-            print("Invalid data: \(jsonError)")
         }
     }
 }

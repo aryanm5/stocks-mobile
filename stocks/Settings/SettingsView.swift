@@ -79,7 +79,6 @@ struct SettingsView: View {
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.inline)
         .task {
-            print("task run")
             updateIcon = false
         }
     }
