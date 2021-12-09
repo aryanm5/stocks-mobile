@@ -15,8 +15,8 @@ struct SettingsView: View {
     
     let icons: [CustomIcon] = [.original, .light, .dark, .mono, .gold]
     
-    let rateURL: URL = URL(string: "itms-apps://apps.apple.com/app/id1590957645?action=write-review")!
-    let shareURL: URL = URL(string: "https://apps.apple.com/app/id1590957645")!
+    let rateURL: URL = URL(string: "itms-apps://apps.apple.com/app/id1599169546?action=write-review")!
+    let shareURL: URL = URL(string: "https://apps.apple.com/app/id1599169546")!
     let feedbackURL: URL = URL(string: "mailto:aryan@mittaldev.com")!
     
     var body: some View {
