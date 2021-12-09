@@ -49,6 +49,7 @@ struct PersonView: View {
                 }
             }
             Text(person.desc)
+                .frame(maxWidth: .infinity, alignment: .leading)
         }
         .padding()
         .padding(.vertical, 5)
