@@ -72,6 +72,11 @@ struct StockView: View {
                 .foregroundColor(.secondary)
                 .offset(y: -10)
             }
+            Text("Disclaimer: This is a prediction of the future and may not be fully accurate.")
+                .font(.caption2)
+                .foregroundColor(.secondary)
+                .bold()
+                .listRowBackground(Color.clear)
             
             StockDetails(stock: stock)
         }
