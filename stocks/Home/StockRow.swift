@@ -15,6 +15,7 @@ struct StockRow: View {
             .font(.body)
             .foregroundColor(.white)
             .lineLimit(1)
+            .frame(maxWidth: .infinity)
     }
 }
 
