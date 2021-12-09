@@ -79,7 +79,7 @@ enum Person: Int {
         switch self {
         case .aryan: return "In addition to building apps for his community, Aryan enjoys writing for his blog and biking with his friends."
         case .aryav: return "Aryav is an aspiring data scientist. He also has a strong passion for photography and loves to learn about upcoming cars."
-        case .anshil: return "Anshil is a self-employed crypto miner, earning up to $2 an hour in exchange for doing all his homework on a Chromebook."
+        case .anshil: return "Anshil chose colors for each stock. He also likes cars."
         }
     }
     
