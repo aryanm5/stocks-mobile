@@ -30,7 +30,12 @@ struct StockView: View {
     
     var body: some View {
         List {
-            VStack {
+            Section(footer: Text("Disclaimer: This is a prediction and may not be accurate.")
+                        .font(.caption2)
+                        .foregroundColor(.secondary)
+                        .bold()
+                        .listRowBackground(Color.clear)
+                        .frame(maxWidth: .infinity, alignment: .center)) {
                 StockHeaderAndPrice(stock: stock, currentIndex: currentIndex ?? (dateRange - 1))
                 
                 Picker("Time Range", selection: $dateRange) {
@@ -62,6 +67,7 @@ struct StockView: View {
                     .foregroundColor(.secondary)
                     .allowsHitTesting(false)
                 }
+                .padding(.bottom, -15)
                 
                 HStack {
                     Text("Today")
@@ -70,13 +76,8 @@ struct StockView: View {
                 }
                 .font(.caption)
                 .foregroundColor(.secondary)
-                .offset(y: -10)
             }
-            Text("Disclaimer: This is a prediction of the future and may not be fully accurate.")
-                .font(.caption2)
-                .foregroundColor(.secondary)
-                .bold()
-                .listRowBackground(Color.clear)
+            .listRowSeparator(.hidden)
             
             StockDetails(stock: stock)
         }
