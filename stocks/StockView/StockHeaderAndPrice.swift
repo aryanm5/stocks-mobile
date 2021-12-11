@@ -20,7 +20,7 @@ struct StockHeaderAndPrice: View {
     let currentIndex: Int
     
     var body: some View {
-        HStack {
+        ZStack(alignment: .leading) {
             VStack(alignment: .leading, spacing: 4) {
                 Text(stock.ticker)
                     .font(.title2.weight(.heavy))
@@ -46,22 +46,24 @@ struct StockHeaderAndPrice: View {
                 }
                 .font(.title.weight(.heavy))
             }
-            Spacer()
-            if !inWatchlist() {
-                Button(action: addWatchlist) {
-                    HStack(spacing: 5) {
-                        Image(systemName: "plus")
-                        Text("Watch")
-                            .bold()
+            HStack {
+                Spacer()
+                if !inWatchlist() {
+                    Button(action: addWatchlist) {
+                        HStack(spacing: 5) {
+                            Image(systemName: "plus")
+                            Text("Watch")
+                                .bold()
+                        }
                     }
+                    .buttonStyle(.plain)
+                    .font(.system(size: 14))
+                    .foregroundColor(.white)
+                    .padding(5)
+                    .padding(.horizontal, 5)
+                    .background(.blue)
+                    .clipShape(Capsule())
                 }
-                .buttonStyle(.plain)
-                .font(.system(size: 14))
-                .foregroundColor(.white)
-                .padding(5)
-                .padding(.horizontal, 5)
-                .background(.blue)
-                .clipShape(Capsule())
             }
         }
         .padding(.horizontal, 5)
