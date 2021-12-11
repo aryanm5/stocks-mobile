@@ -30,7 +30,7 @@ struct StockHeaderAndPrice: View {
                     MovingNumbersView(
                         number: Double(stock.preds[currentIndex >= stock.preds.count ? stock.preds.count - 1 : currentIndex]),
                         numberOfDecimalPlaces: 2,
-                        fixedWidth: 100,
+                        fixedWidth: 180,
                         verticalDigitSpacing: 0,
                         animationDuration: 0.3
                     ) { digit in
