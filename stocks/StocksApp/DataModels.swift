@@ -37,7 +37,6 @@ struct Stock: Codable, Identifiable {
     let exchange: String
     let max: Int
     let min: Int
-    let current: Double
     let realtime: URL
     let website: URL
     let wiki: URL
@@ -71,7 +70,6 @@ let previewStock: Stock = Stock(
     exchange: "NASDAQ",
     max: 848,
     min: 33,
-    current: 180.0,
     realtime: URL(string:"https://www.google.com/finance/quote/AAPL:NASDAQ")!,
     website: URL(string: "https://www.apple.com/")!,
     wiki: URL(string:"https://en.m.wikipedia.org/wiki/Apple_Inc.")!,

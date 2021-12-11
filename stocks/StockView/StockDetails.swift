@@ -20,7 +20,7 @@ struct StockDetails: View {
                 HStack {
                     VStack(spacing: 5) {
                         PriceRow(name: "First", value: stock.preds.first!, days: 0)
-                        PriceRow(name: "Last", value: stock.preds.last!, days: stock.preds.count)
+                        PriceRow(name: "End", value: stock.preds.last!, days: stock.preds.count)
                     }
                     Divider()
                         .padding(.horizontal, 5)
