@@ -14,6 +14,8 @@
 		2F132CF0275FCB9800AFC120 /* Light.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F132CEF275FCB9800AFC120 /* Light.xcassets */; };
 		2F132CF2275FCBA400AFC120 /* Gold.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F132CF1275FCBA400AFC120 /* Gold.xcassets */; };
 		2F16B2302767EA130024A071 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F16B22F2767EA130024A071 /* OnboardingView.swift */; };
+		2F16B2342767EB2E0024A071 /* OnboardingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F16B2332767EB2E0024A071 /* OnboardingItem.swift */; };
+		2F16B2362767EB360024A071 /* OnboardingRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F16B2352767EB360024A071 /* OnboardingRow.swift */; };
 		2F3023DF2753887B007B3044 /* StocksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3023DE2753887B007B3044 /* StocksApp.swift */; };
 		2F4ACB632750AFBF00F511AD /* AllStocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4ACB622750AFBF00F511AD /* AllStocks.swift */; };
 		2F4B281D2742EB5000B71809 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4B281C2742EB5000B71809 /* ContentView.swift */; };
@@ -44,6 +46,8 @@
 		2F132CEF275FCB9800AFC120 /* Light.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Light.xcassets; sourceTree = "<group>"; };
 		2F132CF1275FCBA400AFC120 /* Gold.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Gold.xcassets; sourceTree = "<group>"; };
 		2F16B22F2767EA130024A071 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		2F16B2332767EB2E0024A071 /* OnboardingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingItem.swift; sourceTree = "<group>"; };
+		2F16B2352767EB360024A071 /* OnboardingRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRow.swift; sourceTree = "<group>"; };
 		2F3023DE2753887B007B3044 /* StocksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksApp.swift; sourceTree = "<group>"; };
 		2F4ACB622750AFBF00F511AD /* AllStocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStocks.swift; sourceTree = "<group>"; };
 		2F4B28172742EB5000B71809 /* Stockscast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stockscast.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +107,8 @@
 			isa = PBXGroup;
 			children = (
 				2F16B22F2767EA130024A071 /* OnboardingView.swift */,
+				2F16B2332767EB2E0024A071 /* OnboardingItem.swift */,
+				2F16B2352767EB360024A071 /* OnboardingRow.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -363,8 +369,10 @@
 				2FAA6DB4274A1B2A001D5032 /* StockItem.swift in Sources */,
 				2FD27BDF2751892200C41E65 /* Home.swift in Sources */,
 				2FFC27AC275CB69100D1987D /* AboutView.swift in Sources */,
+				2F16B2342767EB2E0024A071 /* OnboardingItem.swift in Sources */,
 				2F4ACB632750AFBF00F511AD /* AllStocks.swift in Sources */,
 				2FFC27A8275CB1C600D1987D /* SettingsModel.swift in Sources */,
+				2F16B2362767EB360024A071 /* OnboardingRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
