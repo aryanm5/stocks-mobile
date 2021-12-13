@@ -40,7 +40,9 @@ struct Stock: Codable, Identifiable {
     let realtime: URL
     let website: URL
     let wiki: URL
+    let dates: [TimeInterval]
     let preds: [CGFloat]
+    let segments: [String: Int]
     let color1: Rgb
     let color2: Rgb
 }
@@ -61,6 +63,17 @@ struct Article: Codable, Identifiable {
     let tickers: [String]
 }
 
+extension Date {
+    func toStringGMT(format: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        dateFormatter.calendar = Calendar(identifier: .iso8601)
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        return dateFormatter.string(from: self)
+    }
+}
+
 let previewStock: Stock = Stock(
     id: "apple",
     name: "Apple",
@@ -73,6 +86,14 @@ let previewStock: Stock = Stock(
     realtime: URL(string:"https://www.google.com/finance/quote/AAPL:NASDAQ")!,
     website: URL(string: "https://www.apple.com/")!,
     wiki: URL(string:"https://en.m.wikipedia.org/wiki/Apple_Inc.")!,
+    dates: [
+        1639289499,
+        1639404699,
+        1639491099,
+        1639577499,
+        1639663899,
+        1639750299,
+    ],
     preds: [
         173.12,
         172.39,
@@ -80,6 +101,13 @@ let previewStock: Stock = Stock(
         171.05,
         170.65,
         170.87,
+    ],
+    segments: [
+        "week": 5,
+        "month": 21,
+        "quarter": 63,
+        "half": 126,
+        "year": 261
     ],
     color1: Rgb(r: 0, g: 0, b: 0),
     color2: Rgb(r: 103, g: 103, b: 103)

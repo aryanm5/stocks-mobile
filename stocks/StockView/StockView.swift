@@ -9,24 +9,24 @@ import SwiftUI
 import RHLinePlot
 
 struct DateRange: Identifiable {
-    let id: Int
+    let id: String
     let name: String
 }
 
 struct StockView: View {
-    @AppStorage("laserMode") var laserMode: Bool = false
+    @AppStorage("laserMode") private var laserMode: Bool = false
     
     let stock: Stock
     
     let green: Color = Color(red: 33/255, green: 206/255, blue: 153/255)
     let red: Color = Color(red: 244/255, green: 85/255, blue: 49/255)
     
-    let dateRanges: [DateRange] = [DateRange(id: 7, name: "1W"), DateRange(id: 30, name: "1M"), DateRange(id: 90, name: "3M"), DateRange(id: 180, name: "6M"), DateRange(id: 365, name: "1Y")]
+    let dateRanges: [DateRange] = [DateRange(id: "week", name: "1W"), DateRange(id: "month", name: "1M"), DateRange(id: "quarter", name: "3M"), DateRange(id: "half", name: "6M"), DateRange(id: "year", name: "1Y")]
     
     let today: Date = Date()
     
     @State private var currentIndex: Int? = nil
-    @State private var dateRange: Int = 365
+    @State private var dateRange: String = "year"
     
     var body: some View {
         List {
@@ -36,7 +36,7 @@ struct StockView: View {
                         .bold()
                         .listRowBackground(Color.clear)
                         .frame(maxWidth: .infinity, alignment: .center)) {
-                StockHeaderAndPrice(stock: stock, currentIndex: currentIndex ?? (dateRange - 1))
+                StockHeaderAndPrice(stock: stock, currentIndex: currentIndex ?? (stock.segments[dateRange]! - 1))
                 
                 Picker("Time Range", selection: $dateRange) {
                     ForEach(dateRanges) {
@@ -47,21 +47,21 @@ struct StockView: View {
                 
                 ZStack {
                     RHInteractiveLinePlot(
-                        values: Array(stock.preds.prefix(dateRange)),
+                        values: Array(stock.preds.prefix(stock.segments[dateRange]!)),
                         didSelectValueAtIndex: { index in
                             currentIndex = index
                         },
                         valueStickLabel: { _ in
-                            Text(Calendar.current.date(byAdding: .day, value: currentIndex ?? (dateRange - 1), to: today)!.formatted(.dateTime.year().month().day()))
+                            Text(Date(timeIntervalSince1970: stock.dates[currentIndex ?? stock.segments[dateRange]! - 1]).toStringGMT(format: "MMM d, yyyy"))
                         }
                     )
                         .frame(maxWidth: .infinity, minHeight: 300, maxHeight: .infinity)
-                        .foregroundColor(stock.preds.first! <= stock.preds[dateRange > stock.preds.count ? stock.preds.count - 1 : dateRange - 1] ? green : red)
+                        .foregroundColor(stock.preds.first! <= stock.preds[stock.segments[dateRange]! > stock.preds.count ? stock.preds.count - 1 : stock.segments[dateRange]! - 1] ? green : red)
                     
                     HStack {
                         Text(String(format: "%.0f", stock.preds.first!))
                         Spacer()
-                        Text(String(format: "%.0f", stock.preds[dateRange > stock.preds.count ? stock.preds.count - 1 : dateRange - 1]))
+                        Text(String(format: "%.0f", stock.preds[stock.segments[dateRange]! > stock.preds.count ? stock.preds.count - 1 : stock.segments[dateRange]! - 1]))
                     }
                     .font(.caption)
                     .foregroundColor(.secondary)
@@ -72,7 +72,7 @@ struct StockView: View {
                 HStack {
                     Text("Today")
                     Spacer()
-                    Text(Calendar.current.date(byAdding: .day, value: dateRange, to: today)!.formatted(.dateTime.year().month()))
+                    Text(Date(timeIntervalSince1970: stock.dates[stock.segments[dateRange]! - 1]).toStringGMT(format: "MMM yyyy"))
                 }
                 .font(.caption)
                 .foregroundColor(.secondary)

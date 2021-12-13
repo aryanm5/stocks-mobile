@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @AppStorage("laserMode") var laserMode: Bool = false
+    @AppStorage("laserMode") private var laserMode: Bool = false
     
     @State private var currentIcon: String? = UIApplication.shared.alternateIconName
     @State private var updateIcon: Bool = true
