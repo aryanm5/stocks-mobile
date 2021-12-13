@@ -100,6 +100,7 @@ struct Home: View {
                 }
                 .padding(.horizontal)
             }
+            .padding(.bottom, 40)
             .onAppear {
                 setLastUpdatedText()
             }
