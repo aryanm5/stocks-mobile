@@ -13,6 +13,7 @@
 		2F132CEE275FC98D00AFC120 /* Dark.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F132CED275FC98D00AFC120 /* Dark.xcassets */; };
 		2F132CF0275FCB9800AFC120 /* Light.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F132CEF275FCB9800AFC120 /* Light.xcassets */; };
 		2F132CF2275FCBA400AFC120 /* Gold.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F132CF1275FCBA400AFC120 /* Gold.xcassets */; };
+		2F16B2302767EA130024A071 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F16B22F2767EA130024A071 /* OnboardingView.swift */; };
 		2F3023DF2753887B007B3044 /* StocksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3023DE2753887B007B3044 /* StocksApp.swift */; };
 		2F4ACB632750AFBF00F511AD /* AllStocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4ACB622750AFBF00F511AD /* AllStocks.swift */; };
 		2F4B281D2742EB5000B71809 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4B281C2742EB5000B71809 /* ContentView.swift */; };
@@ -42,6 +43,7 @@
 		2F132CED275FC98D00AFC120 /* Dark.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Dark.xcassets; sourceTree = "<group>"; };
 		2F132CEF275FCB9800AFC120 /* Light.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Light.xcassets; sourceTree = "<group>"; };
 		2F132CF1275FCBA400AFC120 /* Gold.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Gold.xcassets; sourceTree = "<group>"; };
+		2F16B22F2767EA130024A071 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		2F3023DE2753887B007B3044 /* StocksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksApp.swift; sourceTree = "<group>"; };
 		2F4ACB622750AFBF00F511AD /* AllStocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStocks.swift; sourceTree = "<group>"; };
 		2F4B28172742EB5000B71809 /* Stockscast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stockscast.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +99,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2F16B22E2767EA080024A071 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				2F16B22F2767EA130024A071 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		2F4B280E2742EB5000B71809 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +128,7 @@
 		2F4B28192742EB5000B71809 /* stocks */ = {
 			isa = PBXGroup;
 			children = (
+				2F16B22E2767EA080024A071 /* Onboarding */,
 				2F9E2AC22761C575000AE191 /* Info.plist */,
 				2FEF582B2761C1E5003D0D24 /* AlternateIcons */,
 				2FFC27B1275CDC4300D1987D /* StocksApp */,
@@ -346,6 +357,7 @@
 				2FE57A3E2751A589002F752B /* StockRow.swift in Sources */,
 				2FDA0E7F2756B1E900F3B09C /* StockHeaderAndPrice.swift in Sources */,
 				2FAC8BAD275B5090009FDB76 /* NewsView.swift in Sources */,
+				2F16B2302767EA130024A071 /* OnboardingView.swift in Sources */,
 				2F0325472755611C0032BCCF /* StockView.swift in Sources */,
 				2F022F9E274A5A86009C2F15 /* DataModels.swift in Sources */,
 				2FAA6DB4274A1B2A001D5032 /* StockItem.swift in Sources */,

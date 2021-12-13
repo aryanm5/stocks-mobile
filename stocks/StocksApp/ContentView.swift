@@ -13,6 +13,8 @@ struct ContentView: View {
     
     @StateObject private var appData: AppData = AppData()
     
+    @AppStorage("firstOpen") private var firstOpen: Bool = true
+    
     @State private var loading: Bool = true
     @State private var isError: Bool = false
     
@@ -27,6 +29,9 @@ struct ContentView: View {
                 Home()
                     .environmentObject(appData)
             }
+        }
+        .sheet(isPresented: $firstOpen) {
+            OnboardingView(isPresented: $firstOpen)
         }
         .task {
             await loadData()
