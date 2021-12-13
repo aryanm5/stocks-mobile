@@ -13,8 +13,6 @@ struct SettingsView: View {
     @State private var currentIcon: String? = UIApplication.shared.alternateIconName
     @State private var updateIcon: Bool = true
     
-    let icons: [CustomIcon] = [.original, .light, .dark, .mono, .gold]
-    
     let rateURL: URL = URL(string: "itms-apps://apps.apple.com/app/id1599169546?action=write-review")!
     let shareURL: URL = URL(string: "https://apps.apple.com/app/id1599169546")!
     let feedbackURL: URL = URL(string: "mailto:aryan@mittaldev.com")!
@@ -33,7 +31,7 @@ struct SettingsView: View {
                 VStack(alignment: .leading) {
                     Text("App Icon")
                     Picker(selection: $currentIcon, label: EmptyView()) {
-                        ForEach(icons, id: \.name) { icon in
+                        ForEach(CustomIcon.allCases) { icon in
                             IconRow(icon: icon, currentIcon: $currentIcon)
                                 .tag(icon.name)
                         }
@@ -131,8 +129,18 @@ struct IconRow: View {
     }
 }
 
-enum CustomIcon: Int {
+enum CustomIcon: Identifiable, CaseIterable {
     case original, light, dark, mono, gold
+    
+    var id: String {
+        switch self {
+        case .original: return "original"
+        case .light: return "light"
+        case .dark: return "dark"
+        case .mono: return "mono"
+        case .gold: return "gold"
+        }
+    }
     
     var name: String? {
         switch self {

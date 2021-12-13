@@ -19,9 +19,9 @@ struct AboutView: View {
                     .padding()
             }
             
-            PersonView(person: .aryan)
-            PersonView(person: .aryav)
-            PersonView(person: .anshil)
+            ForEach(Person.allCases) { person in
+                PersonView(person: person)
+            }
         }
         .navigationTitle("About the App")
         .navigationBarTitleDisplayMode(.inline)
@@ -56,8 +56,16 @@ struct PersonView: View {
     }
 }
 
-enum Person: Int {
+enum Person: CaseIterable, Identifiable {
     case aryan, aryav, anshil
+    
+    var id: String {
+        switch self {
+        case .aryan: return "aryan"
+        case .aryav: return "aryav"
+        case .anshil: return "anshil"
+        }
+    }
     
     var name: String {
         switch self {

@@ -13,7 +13,7 @@ struct StockDetails: View {
     let stock: Stock
     
     @State private var activeUrl: URL? = nil
-        
+    
     var body: some View {
         if !stock.preds.isEmpty {
             Section(header: Text("Prices")) {

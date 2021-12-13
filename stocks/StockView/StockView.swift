@@ -8,9 +8,28 @@
 import SwiftUI
 import RHLinePlot
 
-struct DateRange: Identifiable {
-    let id: String
-    let name: String
+enum DateRange: Identifiable, CaseIterable {
+    case week, month, quarter, half, year
+    
+    var id: String {
+        switch self {
+        case .week: return "week"
+        case .month: return "month"
+        case .quarter: return "quarter"
+        case .half: return "half"
+        case .year: return "year"
+        }
+    }
+    
+    var name: String {
+        switch self {
+        case .week: return "1W"
+        case .month: return "1M"
+        case .quarter: return "3M"
+        case .half: return "6M"
+        case .year: return "1Y"
+        }
+    }
 }
 
 struct StockView: View {
@@ -20,8 +39,6 @@ struct StockView: View {
     
     let green: Color = Color(red: 33/255, green: 206/255, blue: 153/255)
     let red: Color = Color(red: 244/255, green: 85/255, blue: 49/255)
-    
-    let dateRanges: [DateRange] = [DateRange(id: "week", name: "1W"), DateRange(id: "month", name: "1M"), DateRange(id: "quarter", name: "3M"), DateRange(id: "half", name: "6M"), DateRange(id: "year", name: "1Y")]
     
     let today: Date = Date()
     
@@ -39,7 +56,7 @@ struct StockView: View {
                 StockHeaderAndPrice(stock: stock, currentIndex: currentIndex ?? (stock.segments[dateRange]! - 1))
                 
                 Picker("Time Range", selection: $dateRange) {
-                    ForEach(dateRanges) {
+                    ForEach(DateRange.allCases) {
                         Text($0.name)
                     }
                 }
@@ -77,7 +94,7 @@ struct StockView: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
             }
-            .listRowSeparator(.hidden)
+                        .listRowSeparator(.hidden)
             
             StockDetails(stock: stock)
         }

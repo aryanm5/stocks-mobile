@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum SettingsItem: Int {
+enum SettingsItem {
     
     case rate, share, feedback, about
     
