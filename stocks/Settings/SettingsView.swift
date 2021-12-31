@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @AppStorage("laserMode") private var laserMode: Bool = false
+    @AppStorage("colorblind") private var colorblind: Bool = false
     
     @State private var currentIcon: String? = UIApplication.shared.alternateIconName
     @State private var updateIcon: Bool = true
@@ -23,6 +24,12 @@ struct SettingsView: View {
                 VStack(alignment: .leading) {
                     Toggle("Laser Mode", isOn: $laserMode)
                     Text("Special laser effect for graphs")
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+                }
+                VStack(alignment: .leading) {
+                    Toggle("Colorblind Mode", isOn: $colorblind)
+                    Text("Disable unique stock colors")
                         .font(.footnote)
                         .foregroundColor(.secondary)
                 }

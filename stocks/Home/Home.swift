@@ -14,6 +14,8 @@ enum NewsBottomSheetPosition: CGFloat, CaseIterable {
 
 struct Home: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.colorScheme) private var colorScheme: ColorScheme
+    @AppStorage("colorblind") private var colorblind: Bool = false
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \WatchedStock.id, ascending: false)],
@@ -26,6 +28,10 @@ struct Home: View {
     @State private var bottomSheetPosition: NewsBottomSheetPosition = .middle
     
     var body: some View {
+        let background: [Color] = colorScheme == .light
+        ? [Color(red: 70/255, green: 70/255, blue: 70/255), .black]
+        : [Color(red: 180/255, green: 180/255, blue: 180/255), .white]
+        
         VStack(alignment: .leading, spacing: 30) {
             List {
                 VStack {
@@ -73,7 +79,12 @@ struct Home: View {
                                     }
                             }
                             .padding()
-                            .background(LinearGradient(gradient: Gradient(colors: [stock.color1.asColor(), stock.color2.asColor()]), startPoint: .topTrailing, endPoint: .bottomLeading))
+                            .background(
+                                colorblind
+                                ? LinearGradient(gradient: Gradient(colors: background), startPoint: .topTrailing, endPoint: .bottomLeading)
+                                : LinearGradient(gradient: Gradient(colors: [stock.color1.asColor(), stock.color2.asColor()]), startPoint: .topTrailing, endPoint: .bottomLeading)
+                                )
+                                //LinearGradient(gradient: Gradient(colors: [stock.color1.asColor(), stock.color2.asColor()]), startPoint: .topTrailing, endPoint: .bottomLeading))
                             .cornerRadius(10)
                             .padding(.vertical, 5)
                             .listRowSeparator(.hidden)

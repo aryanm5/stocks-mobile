@@ -8,12 +8,17 @@
 import SwiftUI
 
 struct StockRow: View {
+    @Environment(\.colorScheme) private var colorScheme: ColorScheme
+    @AppStorage("colorblind") private var colorblind: Bool = false
+    
     let stock: Stock
     
     var body: some View {
+        let textColor: Color = colorblind ? (colorScheme == .light ? .white : .black) : .white
+
         Text(stock.name)
             .font(.body)
-            .foregroundColor(.white)
+            .foregroundColor(textColor)
             .lineLimit(1)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
