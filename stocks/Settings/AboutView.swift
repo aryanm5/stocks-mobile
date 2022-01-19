@@ -57,13 +57,12 @@ struct PersonView: View {
 }
 
 enum Person: CaseIterable, Identifiable {
-    case aryan, aryav, anshil
+    case aryan, aryav
     
     var id: String {
         switch self {
         case .aryan: return "aryan"
         case .aryav: return "aryav"
-        case .anshil: return "anshil"
         }
     }
     
@@ -71,7 +70,6 @@ enum Person: CaseIterable, Identifiable {
         switch self {
         case .aryan: return "Aryan Mittal"
         case .aryav: return "Aryav Nagar"
-        case .anshil: return "Anshil Patel"
         }
     }
     
@@ -79,7 +77,6 @@ enum Person: CaseIterable, Identifiable {
         switch self {
         case .aryan: return "App Development and Design"
         case .aryav: return "Data Science and Machine Learning"
-        case .anshil: return "Colors and Marketing"
         }
     }
     
@@ -87,7 +84,6 @@ enum Person: CaseIterable, Identifiable {
         switch self {
         case .aryan: return "In addition to building apps for his community, Aryan enjoys writing for his blog and biking with his friends."
         case .aryav: return "Aryav is an aspiring data scientist. He also has a strong passion for photography and loves to learn about upcoming cars."
-        case .anshil: return "Anshil chose colors for each stock. He also likes cars."
         }
     }
     
@@ -95,7 +91,6 @@ enum Person: CaseIterable, Identifiable {
         switch self {
         case .aryan: return "apps.iphone"
         case .aryav: return "gearshape.2"
-        case .anshil: return "megaphone"
         }
     }
 }
