@@ -34,6 +34,8 @@ struct SettingsView: View {
                         .foregroundColor(.secondary)
                 }
             }
+            
+#if !targetEnvironment(macCatalyst)
             Section {
                 VStack(alignment: .leading) {
                     Text("App Icon")
@@ -62,6 +64,7 @@ struct SettingsView: View {
                     }
                 }
             }
+#endif
             
             Section(footer: footer) {
                 Button(action: { openURL(rateURL) }) {
