@@ -1,5 +1,5 @@
 PODS:
-  - BottomSheetSwiftUI (2.4.0)
+  - BottomSheetSwiftUI (2.7.0)
   - MovingNumbersView (0.1.0)
   - RHLinePlot (0.1.0)
 
@@ -15,7 +15,7 @@ SPEC REPOS:
     - RHLinePlot
 
 SPEC CHECKSUMS:
-  BottomSheetSwiftUI: c176c3022969d6383deaa388dd011199cc50f5bd
+  BottomSheetSwiftUI: 57c6e635baeeae878508883b6985051556172515
   MovingNumbersView: 24af6d9dbf3979108a7a2a1c77ba23bd8925dc35
   RHLinePlot: ee1d4c933363f9efc37c1264bf46b7db6aca462a
 
