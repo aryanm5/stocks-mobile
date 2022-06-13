@@ -138,6 +138,7 @@ struct Home: View {
     
     private func setLastUpdatedText() -> Void {
         if lastUpdatedText.isEmpty {
+            print("setting last updated to \(appData.news.lastUpdated)")
             let updateDate: Date = Date(timeIntervalSince1970: appData.news.lastUpdated)
             
             let formatter: RelativeDateTimeFormatter = RelativeDateTimeFormatter()
